@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favor - @ViewBag.Title</title>
+    <title>@ViewBag.Title - Favor</title>
    
 
 
@@ -18,7 +18,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-
                 </button>
                 <a class="navbar-logo" href="#">
                     <img src="../img/favor.jpg" width="120" height="55">
@@ -26,13 +25,32 @@
             </div>
 
             <div class="collapse navbar-collapse" id="navigation-example">
-               <ul class="nav navbar-nav navbar-right">
-                   <li>
-                       <a href="/Account/Register">Register</a>
-                   </li>
-                   <li>
-                       <a href="/Account/Login">Login</a>
-                   </li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../components-documentation.html" target="_blank">
+                            Components
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
+                            <i class="material-icons">unarchive</i> Upgrade to PRO
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+                            <i class="fa fa-facebook-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -42,10 +60,17 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - ToBeerOrNotToBeer corporation</p>
         </footer>
     </div>
-
+    
+    
+    
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!--     Css and JavaScript support     -->
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/bootstrap.min.css")
