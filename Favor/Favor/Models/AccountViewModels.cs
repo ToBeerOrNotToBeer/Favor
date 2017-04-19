@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace Favor.Models
+﻿namespace Favor.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
