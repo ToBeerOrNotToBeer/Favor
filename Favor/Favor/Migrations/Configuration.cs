@@ -5,7 +5,7 @@ namespace Favor.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<Favor.Models.BlogDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<Favor.Models.FavorDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Favor.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Favor.Models.BlogDbContext context)
+        protected override void Seed(Favor.Models.FavorDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

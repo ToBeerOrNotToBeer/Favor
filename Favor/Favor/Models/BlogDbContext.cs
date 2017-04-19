@@ -2,16 +2,16 @@
 {
     using Microsoft.AspNet.Identity.EntityFramework;
     
-    public class BlogDbContext : IdentityDbContext<ApplicationUser>
+    public class FavorDbContext : IdentityDbContext<ApplicationUser>
     {
-        public BlogDbContext()
+        public FavorDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static BlogDbContext Create()
+        public static FavorDbContext Create()
         {
-            return new BlogDbContext();
+            return new FavorDbContext();
         }
     }
 }
