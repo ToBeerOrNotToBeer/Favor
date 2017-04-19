@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Data.Entity;
 
 [assembly: OwinStartupAttribute(typeof(Favor.Startup))]
 namespace Favor
@@ -8,6 +9,8 @@ namespace Favor
     {
         public void Configuration(IAppBuilder app)
         {
+            
+
             ConfigureAuth(app);
         }
     }
