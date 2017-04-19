@@ -1,4 +1,4 @@
-﻿namespace Favor.Models
+﻿namespace Favor.Data
 {
     using Microsoft.AspNet.Identity.EntityFramework;
     

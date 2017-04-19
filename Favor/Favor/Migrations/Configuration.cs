@@ -4,8 +4,8 @@ namespace Favor.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-
-    public sealed class Configuration : DbMigrationsConfiguration<Favor.Models.FavorDbContext>
+    using Data;
+    public sealed class Configuration : DbMigrationsConfiguration<FavorDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Favor.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Favor.Models.FavorDbContext context)
+        protected override void Seed(FavorDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

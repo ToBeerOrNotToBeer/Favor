@@ -1,4 +1,6 @@
-﻿namespace Favor
+﻿using Favor.Data;
+
+namespace Favor
 {
     using System;
     using System.Collections.Generic;

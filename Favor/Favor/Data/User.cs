@@ -1,4 +1,4 @@
-﻿namespace Favor.Models
+﻿namespace Favor.Data
 {
     using System.Security.Claims;
     using System.Threading.Tasks;

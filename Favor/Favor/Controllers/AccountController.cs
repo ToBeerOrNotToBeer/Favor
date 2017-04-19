@@ -1,4 +1,6 @@
-﻿namespace Favor.Controllers
+﻿using Favor.Data;
+
+namespace Favor.Controllers
 {
     using System;
     using System.Globalization;
