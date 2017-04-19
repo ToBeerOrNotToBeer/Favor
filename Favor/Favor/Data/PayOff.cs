@@ -7,13 +7,13 @@ namespace Favor.Data
 {
     public class PayOff
     {
-        public PayOff(string withDescription, decimal withMoney)
+        public PayOff(decimal withMoney, params string[] withFavor)
         {
-            this.WithDescription = withDescription;
+            this.WithFavor = withFavor;
             this.WithMoney = withMoney;
         }
 
-        public string WithDescription { get; set; }
+        public string[] WithFavor { get; set; }
 
         public decimal WithMoney { get; set; }
     }

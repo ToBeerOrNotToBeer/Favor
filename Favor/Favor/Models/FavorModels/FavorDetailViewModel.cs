@@ -1,21 +1,18 @@
-﻿namespace Favor.Data
+﻿
+namespace Favor.Models.FavorModels
 {
+    using Favor.Data;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Web;
-    using System.ComponentModel.DataAnnotations;
-
-    public class Favor
+    /// <summary>
+    /// For the details view of the favor
+    /// </summary>
+    public class FavorDetailViewModel 
     {
-        public Favor()
-        {
-            CreationDate = DateTime.Now;
-        }
-
-        public int Id { get; set; }
-
-        public DateTime CreationDate { get; }      
+        public DateTime CreationDate { get; }
 
         [Required]
         [MaxLength(150, ErrorMessage = "The title is too long!")]
@@ -24,11 +21,9 @@
         [Required]
         public string Description { get; set; }
 
-        public int UserId { get; set; }   
+        public int UserId { get; set; }
 
         [Required]
         public PayOff PayOff { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

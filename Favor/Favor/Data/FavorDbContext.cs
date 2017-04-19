@@ -1,7 +1,8 @@
 ﻿namespace Favor.Data
 {
     using Microsoft.AspNet.Identity.EntityFramework;
-    
+    using System.Collections.Generic;
+
     public class FavorDbContext : IdentityDbContext<User>
     {
         public FavorDbContext()
@@ -13,5 +14,7 @@
         {
             return new FavorDbContext();
         }
+
+        public ICollection<Favor> AllFavors { get; set; }
     }
 }
