@@ -20,5 +20,8 @@
         public int UserId { get; set; }
 
         public virtual User User { get; set; }
+
+        [Required]
+        public PayOff PayOff { get; set; }
     }
 }
