@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNet.Identity.EntityFramework;
     
-    public class FavorDbContext : IdentityDbContext<ApplicationUser>
+    public class FavorDbContext : IdentityDbContext<User>
     {
         public FavorDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
