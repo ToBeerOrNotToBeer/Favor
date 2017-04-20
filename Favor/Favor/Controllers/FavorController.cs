@@ -70,7 +70,16 @@ namespace Favor.Controllers
         [Authorize]
         public ActionResult ListAllTypeSearch()
         {
-            return RedirectToAction("Index", "Home");
+            var db = new FavorDbContext();
+
+            var allTypeSearch = db.Favors.Where(f => f.FavorType == FavorType.DoingFavor).ToList();
+
+            if (allTypeSearch == null)
+            {
+                RedirectToAction("Index", "Home");
+            }
+
+            return View(allTypeSearch);
         }
     }
 }

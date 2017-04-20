@@ -268,6 +268,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Favor\Create.cshtml" />
     <Content Include="Views\Favor\Details.cshtml" />
+    <Content Include="Views\Favor\ListAllTypeSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
