@@ -1,0 +1,20 @@
+﻿@model Favor.Models.FavorModels.FavorDetailViewModel
+
+<h1>@Model.Title</h1>
+<div>
+    <p>
+        @Model.Description
+    </p>
+    <p>
+        @if (Model.FavorType == Favor.Data.FavorType.AskingForFavor)
+        {
+            @: In exchange i WANT somthing from the category of @Model.PayOff.WithFavor.ToString() or @Model.PayOff.WithMoney.ToString()$
+        }
+        else
+        {
+            @: In exchange i GIVE somthing from the category of @Model.PayOff.WithFavor.ToString() or @Model.PayOff.WithMoney.ToString()$
+        }
+    </p>
+</div>
+<span>Posted from @Model.UserEmail</span>
+<span>Posted on @Model.CreationDate</span>

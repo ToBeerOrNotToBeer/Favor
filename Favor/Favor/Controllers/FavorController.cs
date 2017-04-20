@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Favor.Data;
 using Microsoft.AspNet.Identity;
+using Favor.Models.FavorModels;
+using System.Data.Entity;
 
 namespace Favor.Controllers
 {
@@ -38,6 +40,31 @@ namespace Favor.Controllers
             
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        public ActionResult Details(int id)
+        {
+            var db = new FavorDbContext();
+
+            var fullFavor = db.Favors.Include(a => a.PayOff).FirstOrDefault(a => a.Id == id);
+
+            if (fullFavor == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            FavorDetailViewModel favorDetailModel = new FavorDetailViewModel
+            {
+                Title = fullFavor.Title,
+                Description = fullFavor.Description,
+                CreationDate = fullFavor.CreationDate,
+                UserEmail = fullFavor.User.Email,
+                PayOff = fullFavor.PayOff,
+                FavorType = fullFavor.FavorType
+            };
+
+            return View(favorDetailModel);
         }
     }
 }
