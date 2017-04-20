@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Collections.Generic;
+    using System.Data.Entity;
 
     public class FavorDbContext : IdentityDbContext<User>
     {
@@ -10,7 +11,7 @@
         {
         }
         
-        public ICollection<Favor> AllFavors { get; set; }
+        public IDbSet<Favor> Favors { get; set; }
 
         public static FavorDbContext Create()
         {

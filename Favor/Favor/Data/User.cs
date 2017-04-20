@@ -17,13 +17,13 @@
             this.SentFavors = new List<string>();
         }
 
-        public ICollection<string> MyFavors { get; set; }
+        public List<string> MyFavors { get; set; }
 
-        public ICollection<string> PendingFavors { get; set; }
+        public List<string> PendingFavors { get; set; }
 
-        public ICollection<string> AccomplishedFavors { get; set; }
+        public List<string> AccomplishedFavors { get; set; }
 
-        public ICollection<string> SentFavors { get; set; }
+        public List<string> SentFavors { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

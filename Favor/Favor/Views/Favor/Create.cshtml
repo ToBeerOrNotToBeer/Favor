@@ -1,0 +1,35 @@
+﻿@model Favor.Data.Favor
+
+@using (Html.BeginForm("Create", "Favor", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(f => f.Title)
+        <div>
+            @Html.TextBoxFor(f => f.Title)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(f => f.Description)
+        <div>
+            @Html.TextBoxFor(f => f.Description)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(f => f.PayOff.WithFavor)
+        <div>
+            @Html.EnumDropDownListFor(f => f.PayOff.WithFavor)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(f => f.PayOff.WithMoney)
+        <div>
+            @Html.TextBoxFor(f => f.PayOff.WithMoney)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" value="CreateMethod"/>
+        </div>
+    </div>
+}
