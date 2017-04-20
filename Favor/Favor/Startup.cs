@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using Favor.Data;
+using Favor.Migrations;
+using Microsoft.Owin;
 using Owin;
 using System.Data.Entity;
 
@@ -9,7 +11,8 @@ namespace Favor
     {
         public void Configuration(IAppBuilder app)
         {
-            
+            Database.SetInitializer(
+                new MigrateDatabaseToLatestVersion<FavorDbContext, Configuration>());
 
             ConfigureAuth(app);
         }

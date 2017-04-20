@@ -35,6 +35,6 @@
         public FavorType FavorType { get; set; }
 
         [Required]
-        public Category FavirCategory { get; set; }
+        public Category FavorCategory { get; set; }
     }
 }
