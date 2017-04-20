@@ -66,5 +66,11 @@ namespace Favor.Controllers
 
             return View(favorDetailModel);
         }
+
+        [Authorize]
+        public ActionResult ListAllTypeSearch()
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
