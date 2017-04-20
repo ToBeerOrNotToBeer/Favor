@@ -9,8 +9,6 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
-
-<h2>@ViewBag.Title.</h2>
 <div class="wrapper">
     <div class="container">
         <div class="row">
@@ -18,9 +16,9 @@
                 <div class="card card-signup">
                     <form class="form" method="post">
                         <div class="header header-info text-center">
-                            <h3>Sign Up</h3>
+                            <h3>Sign In</h3>
                         </div>
-                        <p class="text-divider">Welcome to Favor<br /> Sign Up so you can search for some hot offers! </p>
+                        <p class="text-divider">Welcome to Favor<br /> Sign In so you can search for some hot offers! </p>
                         <div class="col-md-6 col-md-push-3 input text-center">
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -39,7 +37,7 @@
                             <br />
                             <br />
                             <div class="footer text-center">
-                                <input type="submit" value="Get Started" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Signing">
+                                <input type="submit" value="Log In" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Signing">
                             </div>
                     </form>
                 </div>
