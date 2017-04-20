@@ -8,7 +8,7 @@ namespace Favor.Data
     
         public enum Category
         {
-            MachineSercice,
+            MachineService,
             PersonalCare,
             Art,
             Media,
