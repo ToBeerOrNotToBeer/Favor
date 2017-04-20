@@ -11,19 +11,19 @@
     {
         public User()
         {
-            this.MyFavors = new List<string>();
-            this.PendingFavors = new List<string>();
-            this.AccomplishedFavors = new List<string>();
-            this.SentFavors = new List<string>();
+            this.MyFavors = new List<Favor>();
+            this.PendingFavors = new List<Favor>();
+            this.AccomplishedFavors = new List<Favor>();
+            this.SentFavors = new List<Favor>();
         }
 
-        public List<string> MyFavors { get; set; }
+        public List<Favor> MyFavors { get; set; }
 
-        public List<string> PendingFavors { get; set; }
+        public List<Favor> PendingFavors { get; set; }
 
-        public List<string> AccomplishedFavors { get; set; }
+        public List<Favor> AccomplishedFavors { get; set; }
 
-        public List<string> SentFavors { get; set; }
+        public List<Favor> SentFavors { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

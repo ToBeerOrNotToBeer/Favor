@@ -21,9 +21,21 @@
         </div>
     </div>
     <div class="form-group">
+        @Html.LabelFor(f => f.FavorType)
+        <div>
+            @Html.EnumDropDownListFor(f => f.FavorType)
+        </div>
+    </div>
+    <div class="form-group">
         @Html.LabelFor(f => f.PayOff.WithMoney)
         <div>
             @Html.TextBoxFor(f => f.PayOff.WithMoney)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(f => f.FavorCategory)
+        <div>
+            @Html.EnumDropDownListFor(f => f.FavorCategory)
         </div>
     </div>
 

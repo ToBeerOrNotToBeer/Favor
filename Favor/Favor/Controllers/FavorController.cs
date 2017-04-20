@@ -20,12 +20,22 @@ namespace Favor.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Create(Data.Favor singleFavor)
+        public ActionResult Create(Data.Favor favor)
         {
-            var db = new FavorDbContext();
-            //var user = db.Users.First(a => a.Id == User.Identity.GetUserId());
+            if (ModelState.IsValid)
+            {
+                var db = new FavorDbContext();
 
-            singleFavor.UserId = User.Identity.GetUserId();
+                var currentUserId = User.Identity.GetUserId();
+
+                favor.UserId = currentUserId;
+
+                var user = db.Users.Find(currentUserId);
+                user.MyFavors.Add(favor);
+
+                db.SaveChanges();
+            }
+            
 
             return RedirectToAction("Index", "Home");
         }
