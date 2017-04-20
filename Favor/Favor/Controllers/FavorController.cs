@@ -81,5 +81,20 @@ namespace Favor.Controllers
 
             return View(allTypeSearch);
         }
+
+        [Authorize]
+        public ActionResult ListAllTypeDoing()
+        {
+            var db = new FavorDbContext();
+
+            var allTypeDoing = db.Favors.Where(f => f.FavorType == FavorType.AskingForFavor).ToList();
+
+            if (allTypeDoing == null)
+            {
+                RedirectToAction("Index", "Home");
+            }
+
+            return View(allTypeDoing);
+        }
     }
 }
