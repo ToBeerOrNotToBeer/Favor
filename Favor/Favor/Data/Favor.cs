@@ -25,11 +25,11 @@
         public string Description { get; set; }
 
         public int UserId { get; set; }   
-
+        
+        public virtual User User { get; set; }
+        
         [Required]
         public PayOff PayOff { get; set; }
-
-        public virtual User User { get; set; }
 
         [Required]
         public FavorType FavorType { get; set; }
