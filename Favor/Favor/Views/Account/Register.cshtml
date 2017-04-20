@@ -7,50 +7,50 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary("", new { @class = "text-danger" })
-        
-	        <div class="wrapper">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 col-sm-2 col-sm-offset-2">
-						<div class="card card-signup">
-							<form class="form" method="post">
-								<div class="header header-info text-center">
-									<h3>Sign Up</h3>	
-								</div>
 
-								<p class="text-divider">Welcome to Favor<br/> Sign Up so you can search for some hot offers! </p>
-                                <div class="col-md-6 col-md-push-3 input text-center">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">mail_outline</i>
-                                        </span>
-                                        <input class="form-control" data-val="true"
-                                               data-val-email="The Email field is not a valid e-mail address."
-                                               data-val-required="The Email field is required." id="Email" name="Email" type="text" value="" placeholder="Email">
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">vpn_key</i>
-                                        </span>
-                                        <input type="password" placeholder="Password" name="Password" class="form-control" />
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="material-icons">vpn_key</i>
-                                        </span>
-                                        <input type="password" name="ConfirmPassword" placeholder="Confirm Password" class="form-control" />
-                                    </div>
-								<br/>
-								<br/>
-								<div class="footer text-center">
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-2 col-sm-offset-2">
+                    <div class="card card-signup">
+                        <form class="form" method="post">
+                            <div class="header header-info text-center">
+                                <h3>Sign Up</h3>
+                            </div>
+                            <p class="text-divider">Welcome to Favor<br /> Sign Up so you can search for some hot offers! </p>
+                            <div class="col-md-6 col-md-push-3 input text-center">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">mail_outline</i>
+                                    </span>
+                                    <input class="form-control" data-val="true"
+                                           data-val-email="The Email field is not a valid e-mail address."
+                                           data-val-required="The Email field is required." id="Email" name="Email" type="text" value="" placeholder="Email">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">vpn_key</i>
+                                    </span>
+                                    <input type="password" placeholder="Password" name="Password" class="form-control" />
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">vpn_key</i>
+                                    </span>
+                                    <input type="password" name="ConfirmPassword" placeholder="Confirm Password" class="form-control" />
+                                </div>
+                                <br />
+                                <br />
+                                <div class="footer text-center">
                                     <input type="submit" value="Get Started" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Signing">
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div></div>
-           
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 }
 
 @section Scripts {
