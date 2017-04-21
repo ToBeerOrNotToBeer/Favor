@@ -2,6 +2,7 @@
 {
     public enum Category
     {
+        All,
         MachineService,
         PersonalCare,
         Art,
@@ -15,6 +16,7 @@
         DIY,
         OnlineService,
         SoftwareService,
-        HardwareService
+        HardwareService,
+        Other
     }
 }
