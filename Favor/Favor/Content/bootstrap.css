@@ -6813,8 +6813,4 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
-  #myUniqueId{
-      height: 200px;
-
-  }
 }
