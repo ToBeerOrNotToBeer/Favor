@@ -74,11 +74,14 @@ namespace Favor.Controllers
         }
 
         [Authorize]
-        public ActionResult ListAllTypeSearch(int currentPage = 1)
+        public ActionResult ListAllTypeSearch(int currentPage = 1, Category category = (Category)0)
         {
             var db = new FavorDbContext();
 
-            var allTypeSearch = db
+            List<ListAllFavorsModel> allTypeSearch = new List<ListAllFavorsModel>();
+            if (category == Category.All)
+            {
+                allTypeSearch = db
                                 .Favors
                                 .OrderBy(x => x.Id)
                                 .Where(f => f.FavorType == FavorType.Offers)
@@ -93,6 +96,27 @@ namespace Favor.Controllers
                                     FullName = f.User.FullName
                                 })
                                 .ToList();
+            }
+            else
+            {
+                allTypeSearch = db
+                                .Favors
+                                .OrderBy(x => x.Id)
+                                .Where(f => f.FavorType == FavorType.Offers &&
+                                                f.FavorCategory == category)
+                                .Skip((currentPage - 1) * PageConstants.CountOfFavorsOnPage)
+                                .Take(PageConstants.CountOfFavorsOnPage)
+                                .Select(f => new ListAllFavorsModel
+                                {
+                                    Id = f.Id,
+                                    Title = f.Title,
+                                    Description = f.Description,
+                                    Category = f.FavorCategory,
+                                    FullName = f.User.FullName
+                                })
+                                .ToList();
+            }
+            
 
             if (allTypeSearch == null)
             {
@@ -105,14 +129,18 @@ namespace Favor.Controllers
         }
 
         [Authorize]
-        public ActionResult ListAllTypeDoing(int currentPage = 1)
+        public ActionResult ListAllTypeDoing(int currentPage = 1, Category category = (Category)0)
         {
             var db = new FavorDbContext();
 
-            var allTypeDoing = db
+            List<ListAllFavorsModel> allTypeDoing = new List<ListAllFavorsModel>();
+            if (category == Category.All)
+            {
+                allTypeDoing = db
                                 .Favors
                                 .OrderBy(x => x.Id)
-                                .Where(f => f.FavorType == FavorType.Seeks && !f.IsAccomplished)
+                                .Where(f => f.FavorType == FavorType.Seeks &&
+                                                         !f.IsAccomplished)
                                 .Skip((currentPage - 1) * PageConstants.CountOfFavorsOnPage)
                                 .Take(PageConstants.CountOfFavorsOnPage)
                                 .Select(f => new ListAllFavorsModel
@@ -124,6 +152,27 @@ namespace Favor.Controllers
                                     FullName = f.User.FullName
                                 })
                                 .ToList();
+            }
+            else
+            {
+                allTypeDoing = db
+                                .Favors
+                                .OrderBy(x => x.Id)
+                                .Where(f => f.FavorType == FavorType.Seeks &&
+                                                         !f.IsAccomplished &&
+                                                         f.FavorCategory == category)
+                                .Skip((currentPage - 1) * PageConstants.CountOfFavorsOnPage)
+                                .Take(PageConstants.CountOfFavorsOnPage)
+                                .Select(f => new ListAllFavorsModel
+                                {
+                                    Id = f.Id,
+                                    Title = f.Title,
+                                    Description = f.Description,
+                                    Category = f.FavorCategory,
+                                    FullName = f.User.FullName
+                                })
+                                .ToList();
+            }
 
             if (allTypeDoing == null)
             {
