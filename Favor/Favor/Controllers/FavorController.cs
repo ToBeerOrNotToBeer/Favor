@@ -43,8 +43,13 @@ namespace Favor.Controllers
         }
 
         [Authorize]
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var db = new FavorDbContext();
 
             var fullFavor = db.Favors.Include(a => a.PayOff).FirstOrDefault(a => a.Id == id);
