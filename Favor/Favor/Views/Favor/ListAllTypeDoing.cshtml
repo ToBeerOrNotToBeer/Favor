@@ -4,26 +4,72 @@
     ViewBag.Title = "Doing";
 }
 
-<h1>HI WE ARE SEARCHING</h1>
+@{ 
+    int previousPage = ViewBag.CurrentPage - 1;
+    int nextPage = ViewBag.CurrentPage + 1;
 
-@foreach (var singleFavorModel in Model)
-{
-    <div class="col-sm-6">
-        <article>
-            <header>
-                <h2>
-                    <a href="/Favor/Details/@singleFavorModel.Id">@singleFavorModel.Title</a>
-                </h2>
-            </header>
-            <p>
-                @singleFavorModel.Description
-            </p>
-            <footer class="pull-right">
-                <small class="author">
-                   @singleFavorModel.FullName
-                </small>
-            </footer>
-        </article>
+    bool leftArrowIsActive = true;
+    bool rightArrowIsActive = true;
+
+    if (ViewBag.CurrentPage == 1)
+    {
+        previousPage = 1;
+
+        leftArrowIsActive = false;
+    }
+
+    if (Model.Count < 5)
+    {
+        nextPage = ViewBag.CurrentPage;
+
+        rightArrowIsActive = false;
+    }
+}
+
+<div>
+    <div class="text-center">
+        <ul class="pagination pagination-primary">
+            @if (leftArrowIsActive)
+            {
+                <li>@Html.ActionLink("<", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage }, null)</li>
+            }
+            else
+            {
+                <li class="fade"><a href="#"><</a></li>
+            }
+            <li class="active"><a href="#">@ViewBag.CurrentPage</a></li>
+            @if (rightArrowIsActive)
+            {
+                <li>@Html.ActionLink(">", "ListAllTypeDoing", "Favor", new { @currentPage = nextPage }, null)</li>
+            }
+            else
+            {
+                <li class="fade"><a href="#">></a></li>
+            }
+        </ul>
     </div>
 
-}
+
+    @foreach (var singleFavorModel in Model)
+    {
+        <div class="col-sm-6">
+            <article>
+                <header>
+                    <h2>
+                        <a href="/Favor/Details/@singleFavorModel.Id">@singleFavorModel.Title</a>
+                    </h2>
+                </header>
+                <p>
+                    @singleFavorModel.Description
+                </p>
+                <footer class="pull-right">
+                    <small class="author">
+                        @singleFavorModel.FullName
+                    </small>
+                </footer>
+            </article>
+        </div>
+
+    }
+
+</div>
