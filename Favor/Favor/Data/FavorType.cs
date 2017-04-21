@@ -7,7 +7,7 @@ namespace Favor.Data
 {
     public enum FavorType
     {
-        DoingFavor,
-        AskingForFavor
+        Doing_Favor,
+        Asking_For_Favor
     }
 }
