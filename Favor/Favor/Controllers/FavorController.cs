@@ -75,6 +75,7 @@ namespace Favor.Controllers
             var allTypeSearch = db
                                 .Favors
                                 .Where(f => f.FavorType == FavorType.DoingFavor)
+                                
                                 .ToList();
 
             if (allTypeSearch == null)
