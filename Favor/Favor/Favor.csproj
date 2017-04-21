@@ -192,6 +192,7 @@
     <Compile Include="Controllers\FavorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Data\Favor.cs" />
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\FavorType.cs" />
@@ -272,6 +273,7 @@
     <Content Include="Views\Favor\Details.cshtml" />
     <Content Include="Views\Favor\ListAllTypeSearch.cshtml" />
     <Content Include="Views\Favor\ListAllTypeDoing.cshtml" />
+    <Content Include="Views\Profile\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

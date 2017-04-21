@@ -10,7 +10,7 @@
             @Html.ActionLink("Create offer", "Create", "Favor")
         </li>
         <li>
-            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(User.Identity.GetUserName(), "Profile", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
     </ul>
