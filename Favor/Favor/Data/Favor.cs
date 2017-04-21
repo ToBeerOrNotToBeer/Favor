@@ -38,6 +38,6 @@
         [Required]
         public Category FavorCategory { get; set; }
 
-        public Boolean IsAccomplished { get; set; }
+        public bool IsAccomplished { get; set; }
     }
 }
