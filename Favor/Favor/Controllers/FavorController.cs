@@ -75,7 +75,13 @@ namespace Favor.Controllers
             var allTypeSearch = db
                                 .Favors
                                 .Where(f => f.FavorType == FavorType.DoingFavor)
-                                
+                                .Select(f => new ListAllFavorsModel
+                                {
+                                    Id = f.Id,
+                                    Title = f.Title,
+                                    Description = f.Description,
+                                    Category = f.FavorCategory
+                                })
                                 .ToList();
 
             if (allTypeSearch == null)
@@ -94,6 +100,13 @@ namespace Favor.Controllers
             var allTypeDoing = db
                                 .Favors
                                 .Where(f => f.FavorType == FavorType.AskingForFavor && !f.IsAccomplished)
+                                .Select(f => new ListAllFavorsModel
+                                {
+                                    Id = f.Id,
+                                    Title = f.Title,
+                                    Description = f.Description,
+                                    Category = f.FavorCategory
+                                })
                                 .ToList();
 
             if (allTypeDoing == null)
