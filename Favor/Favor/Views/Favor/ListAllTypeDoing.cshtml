@@ -55,23 +55,31 @@
 
     @foreach (var singleFavorModel in Model)
     {
-        <div class="col-sm-6">
-            <article>
-                <header>
-                    <h2>
-                        <a href="/Favor/Details/@singleFavorModel.Id">@singleFavorModel.Title</a>
-                    </h2>
-                </header>
-                <p>
-                    @singleFavorModel.Description
-                </p>
-                <footer class="pull-right">
-                    <small class="author">
-                        @singleFavorModel.FullName
-                    </small>
-                </footer>
-            </article>
+        string link = $"/Favor/Details/{singleFavorModel.Id}";
+
+        <div class="wrapper">
+            <div class="col-md-4">
+                <div class="card card-signup" style="margin-top:40px">
+                    <form class="form" method="post">   
+                        <div class="header header-info text-center">
+                            <h2>@singleFavorModel.Title</h2>
+                        </div>
+                        <div class="col-md-8 text-center col-md-offset-2">
+                            <p>
+                                @singleFavorModel.Description.Substring(0, singleFavorModel.Description.Length < 50 ? singleFavorModel.Description.Length : 50)...
+                            </p>
+                            <br />
+                            <br />
+                            <div class="footer text-center">
+                                <form>
+                                    <input type="button" value="Details" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Take a look" onclick="window.location.href='@link'">
+                                </form>
+                            </div>
+                    </form>
+                </div>
+            </div>
         </div>
+
 
     }
 
