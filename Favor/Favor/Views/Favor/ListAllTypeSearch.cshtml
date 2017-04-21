@@ -26,6 +26,8 @@
     }
 }
 
+<br />
+<br />
 <div>
     <div class="text-center">
         <ul class="pagination pagination-primary">
@@ -51,23 +53,39 @@
 
     @foreach (var singleFavorModel in Model)
     {
-        <div class="col-sm-6">
-            <article>
-                <header>
-                    <h2>
-                        @Html.ActionLink(singleFavorModel.Title, "Details", "Favor", new { @id = singleFavorModel.Id }, null)
-                    </h2>
-                </header>
-                <p>
-                    @singleFavorModel.Description
-                </p>
-                <footer class="pull-right">
-                    <small class="author">
-                        @singleFavorModel.FullName
-                    </small>
-                </footer>
-            </article>
-        </div>
+        <div class="wrapper">
+             <div class="col-md-4">
+                        <div class="card card-signup" style="margin-top:40px">
+                            <form class="form" method="post">
+                                <div class="header header-info text-center">
+                                    <h2>@singleFavorModel.Title</h2>
+                                </div>
+                                <div class="col-md-6 col-md-push-3 input text-center">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">mail_outline</i>
+                                        </span>
+                                        <input class="form-control" data-val="true"
+                                               data-val-email="The Email field is not a valid e-mail address."
+                                               data-val-required="The Email field is required." id="Email" name="Email" type="text" value="" placeholder="Email">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">vpn_key</i>
+                                        </span>
+                                        <input type="password" placeholder="Password" name="Password" class="form-control" />
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="footer text-center">
+                                        <input type="submit" value="Log In" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Signing">
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+         
+       
 
     }
 
