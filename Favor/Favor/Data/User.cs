@@ -5,6 +5,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser
@@ -16,6 +17,9 @@
             this.AccomplishedFavors = new List<Favor>();
             this.SentFavors = new List<Favor>();
         }
+
+        [Required]
+        public string FullName { get; set; }
 
         public List<Favor> MyFavors { get; set; }
 

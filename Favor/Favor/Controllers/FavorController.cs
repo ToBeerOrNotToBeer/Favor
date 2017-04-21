@@ -85,7 +85,8 @@ namespace Favor.Controllers
                                     Id = f.Id,
                                     Title = f.Title,
                                     Description = f.Description,
-                                    Category = f.FavorCategory
+                                    Category = f.FavorCategory,
+                                    FullName = f.User.FullName
                                 })
                                 .ToList();
 
@@ -110,7 +111,8 @@ namespace Favor.Controllers
                                     Id = f.Id,
                                     Title = f.Title,
                                     Description = f.Description,
-                                    Category = f.FavorCategory
+                                    Category = f.FavorCategory,
+                                    FullName = f.User.FullName
                                 })
                                 .ToList();
 

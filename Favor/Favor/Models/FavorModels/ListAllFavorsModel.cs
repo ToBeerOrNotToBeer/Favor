@@ -15,5 +15,7 @@ namespace Favor.Models.FavorModels
         public string Description { get; set; }
 
         public Category Category { get; set; }
+
+        public string FullName { get; set; }
     }
 }
