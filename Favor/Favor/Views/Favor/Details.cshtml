@@ -10,7 +10,7 @@
         @Model.Description
     </p>
     <p>
-        @if (Model.FavorType == Favor.Data.FavorType.AskingForFavor)
+        @if (Model.FavorType == Favor.Data.FavorType.Seeks)
         {
             @: In exchange i WANT somthing from the category of @Model.PayOff.WithFavor.ToString() or @Model.PayOff.WithMoney.ToString()$
         }
