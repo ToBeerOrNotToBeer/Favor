@@ -2,46 +2,63 @@
 
 @using (Html.BeginForm("Create", "Favor", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
-    <div class="form-group">
-        @Html.LabelFor(f => f.Title)
-        <div>
-            @Html.TextBoxFor(f => f.Title)
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(f => f.Description)
-        <div>
-            @Html.TextBoxFor(f => f.Description)
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(f => f.PayOff.WithFavor)
-        <div>
-            @Html.EnumDropDownListFor(f => f.PayOff.WithFavor)
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(f => f.FavorType)
-        <div>
-            @Html.EnumDropDownListFor(f => f.FavorType)
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(f => f.PayOff.WithMoney)
-        <div>
-            @Html.TextBoxFor(f => f.PayOff.WithMoney)
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(f => f.FavorCategory)
-        <div>
-            @Html.EnumDropDownListFor(f => f.FavorCategory)
-        </div>
-    </div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-2 col-sm-offset-2">
+                    <div class="card card-signup">
+                        <form class="form" method="post">
+                            <div class="header header-info text-center">
+                                <h3>Create Offer</h3>
+                            </div>
+                            <p class="text-divider">Welcome to Favor<br /> Post your offer here</p>
+                            <div class="col-md-6 col-md-push-3 input text-center">
+                                
+                                <div class="input-group col-md-6 col-md-push-3 input text-center">
+                                    <div class="form-group">
+                                        <input class="form-control text-center" name="Title" placeholder="Enter your title here" type="text">
+                                    </div>  
+                                </div>
+                                
+                            
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <textarea  class="form-control text-center" name="Description" rows="6" cols="50" placeholder="Enter your Description here"></textarea>
+                                    </span>
+                                </div>
 
-    <div class="form-group">
-        <div>
-            <input type="submit" value="CreateMethod"/>
+                                <div class="form-group">
+                                    What offer do you want in trade: @Html.EnumDropDownListFor(f => f.PayOff.WithFavor, new {@class="btn btn-info"})
+                                </div>
+
+                                <div class="input-group col-md-6 col-md-push-3 input text-center">
+                                    <div class="form-group">
+                                        <input class="form-control text-center" placeholder="Amount of money in exchange" type="number">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                   What category is your offer: <br/> @Html.EnumDropDownListFor(f => f.FavorCategory, new { @class = "btn btn-info" })
+                                </div>
+                                
+                                <div class="form-group">
+                                    @Html.LabelFor(f => f.FavorType)
+                                    <div>
+                                        @Html.EnumDropDownListFor(f => f.FavorType, new { @class = "btn btn-info" })
+                                    </div>
+                                </div>
+                                
+                            
+                                
+                                <br />
+                                <br />
+                                <div class="footer text-center">
+                                    <input type="submit" value="Create" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Creating">
+                                </div></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }
