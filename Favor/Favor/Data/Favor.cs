@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Web;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
 
     public class Favor
     {
@@ -33,9 +34,11 @@
         public PayOff PayOff { get; set; }
 
         [Required]
+        [DisplayName("Favor Type")]
         public FavorType FavorType { get; set; }
 
         [Required]
+        [DisplayName("Favor Category")]
         public Category FavorCategory { get; set; }
 
         public bool IsAccomplished { get; set; }

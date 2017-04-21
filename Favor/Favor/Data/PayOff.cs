@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -19,8 +20,10 @@ namespace Favor.Data
 
         public int Id { get; set; }
 
+        [DisplayName("With Favor From Type")]
         public Category WithFavor { get; set; }
 
+        [DisplayName("With Money")]
         public decimal WithMoney { get; set; }
     }
 }
