@@ -9,6 +9,6 @@ namespace Favor.Data
     public enum FavorType
     {
         Offers,
-        Seeking
+        Seeks
     }
 }
