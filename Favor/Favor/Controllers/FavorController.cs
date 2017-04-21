@@ -7,6 +7,7 @@ using Favor.Data;
 using Microsoft.AspNet.Identity;
 using Favor.Models.FavorModels;
 using System.Data.Entity;
+using Favor.GlobalConstants;
 
 namespace Favor.Controllers
 {
@@ -73,13 +74,16 @@ namespace Favor.Controllers
         }
 
         [Authorize]
-        public ActionResult ListAllTypeSearch()
+        public ActionResult ListAllTypeSearch(int currentPage = 1)
         {
             var db = new FavorDbContext();
 
             var allTypeSearch = db
                                 .Favors
+                                .OrderBy(x => x.Id)
                                 .Where(f => f.FavorType == FavorType.Offers)
+                                .Skip((currentPage - 1) * PageConstants.CountOfFavorsOnPage)
+                                .Take(PageConstants.CountOfFavorsOnPage)
                                 .Select(f => new ListAllFavorsModel
                                 {
                                     Id = f.Id,
@@ -94,18 +98,23 @@ namespace Favor.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
+            
+            ViewBag.CurrentPage = currentPage;
 
             return View(allTypeSearch);
         }
 
         [Authorize]
-        public ActionResult ListAllTypeDoing()
+        public ActionResult ListAllTypeDoing(int currentPage = 1)
         {
             var db = new FavorDbContext();
 
             var allTypeDoing = db
                                 .Favors
+                                .OrderBy(x => x.Id)
                                 .Where(f => f.FavorType == FavorType.Seeks && !f.IsAccomplished)
+                                .Skip((currentPage - 1) * PageConstants.CountOfFavorsOnPage)
+                                .Take(PageConstants.CountOfFavorsOnPage)
                                 .Select(f => new ListAllFavorsModel
                                 {
                                     Id = f.Id,
@@ -120,6 +129,8 @@ namespace Favor.Controllers
             {
                 RedirectToAction("Index", "Home");
             }
+
+            ViewBag.CurrentPage = currentPage;
 
             return View(allTypeDoing);
         }

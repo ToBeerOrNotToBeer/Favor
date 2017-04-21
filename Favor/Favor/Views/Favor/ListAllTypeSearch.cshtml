@@ -6,6 +6,50 @@
 
 <h1>HI WE ARE DOING</h1>
 
+@{
+    int previousPage = ViewBag.CurrentPage - 1;
+    int nextPage = ViewBag.CurrentPage + 1;
+
+    bool leftArrowIsActive = true;
+    bool rightArrowIsActive = true;
+
+    if (ViewBag.CurrentPage == 1)
+    {
+        previousPage = 1;
+
+        leftArrowIsActive = false;
+    }
+
+    if (Model.Count < 5)
+    {
+        nextPage = ViewBag.CurrentPage;
+
+        rightArrowIsActive = false;
+    }
+}
+
+<div class="text-center">
+    <ul class="pagination pagination-primary">
+        @if (leftArrowIsActive)
+        {
+            <li>@Html.ActionLink("<", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage }, null)</li>
+        }
+        else
+        {
+            <li class="fade"><a href="#"><</a></li>
+        }
+        <li class="active"><a href="#">@ViewBag.CurrentPage</a></li>
+        @if (rightArrowIsActive)
+        {
+            <li>@Html.ActionLink(">", "ListAllTypeSearch", "Favor", new { @currentPage = nextPage }, null)</li>
+        }
+        else
+        {
+            <li class="fade"><a href="#">></a></li>
+        }
+    </ul>
+</div>
+
 @foreach (var singleFavorModel in Model)
 {
     <div class="col-sm-6">
