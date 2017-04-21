@@ -12,7 +12,7 @@
         <article>
             <header>
                 <h2>
-                    @Html.ActionLink(singleFavorModel.Title, "Details", "Favor", new { @id = singleFavorModel.Id }, null)
+                    <a href="/Favor/Details/@singleFavorModel.Id">@singleFavorModel.Title</a>
                 </h2>
             </header>
             <p>
