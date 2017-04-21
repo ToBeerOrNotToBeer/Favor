@@ -74,7 +74,7 @@ namespace Favor.Controllers
 
             var allTypeSearch = db
                                 .Favors
-                                .Where(f => f.FavorType == FavorType.Doing_Favor)
+                                .Where(f => f.FavorType == FavorType.Offers)
                                 .Select(f => new ListAllFavorsModel
                                 {
                                     Id = f.Id,
@@ -99,7 +99,7 @@ namespace Favor.Controllers
 
             var allTypeDoing = db
                                 .Favors
-                                .Where(f => f.FavorType == FavorType.Asking_For_Favor && !f.IsAccomplished)
+                                .Where(f => f.FavorType == FavorType.Seeking && !f.IsAccomplished)
                                 .Select(f => new ListAllFavorsModel
                                 {
                                     Id = f.Id,
