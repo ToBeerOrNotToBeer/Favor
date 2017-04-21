@@ -87,7 +87,7 @@ namespace Favor.Controllers
         {
             var db = new FavorDbContext();
 
-            var allTypeDoing = db.Favors.Where(f => f.FavorType == FavorType.AskingForFavor).ToList();
+            var allTypeDoing = db.Favors.Where(f => f.FavorType == FavorType.AskingForFavor && !f.IsAccomplished).ToList();
 
             if (allTypeDoing == null)
             {

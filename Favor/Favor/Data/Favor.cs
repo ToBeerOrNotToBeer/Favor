@@ -11,6 +11,7 @@
         public Favor()
         {
             CreationDate = DateTime.Now;
+            IsAccomplished = false;
         }
 
         public int Id { get; set; }
@@ -36,5 +37,7 @@
 
         [Required]
         public Category FavorCategory { get; set; }
+
+        public Boolean IsAccomplished { get; set; }
     }
 }
