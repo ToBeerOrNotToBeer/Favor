@@ -53,6 +53,8 @@
 
     @foreach (var singleFavorModel in Model)
     {
+        string link = $"/Favor/Details/{singleFavorModel.Id}";
+
         <div class="wrapper">
             <div class="col-md-4">
                 <div class="card card-signup" style="margin-top:40px">
@@ -62,20 +64,20 @@
                         </div>
                         <div class="col-md-8 text-center col-md-offset-2">
                             <p>
-                                @singleFavorModel.Description.Substring(0, singleFavorModel.Description.Length / 2)...
+                                @singleFavorModel.Description.Substring(0, singleFavorModel.Description.Length < 50 ?                                                           singleFavorModel.Description.Length :                                                               50)...
                                     </p>
                                     <br />
                                     <br />
                                     <div class="footer text-center">
-                                        <input type="submit" value="Log In" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Signing">
+                                        <form>
+                                            <input type="button" value="Details" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Take a look" onclick="window.location.href='@link'">
+                                        </form>
                                     </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
-
-
+                
     }
 
 </div>
