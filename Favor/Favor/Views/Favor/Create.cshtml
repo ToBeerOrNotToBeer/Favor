@@ -10,8 +10,10 @@
                         <form class="form" method="post">
                             <div class="header header-info text-center">
                                 <h3>Create Offer</h3>
-                            </div>
-                            <p class="text-divider">Welcome to Favor<br /> Post your offer here</p>
+                                </div><b>
+                                <p class="text-divider">Favor Service<br /> Post your offer here</p>
+                                </b>
+                                <hr />
                             <div class="col-md-6 col-md-push-3 input text-center">
                                 
                                 <div class="input-group col-md-6 col-md-push-3 input text-center">
@@ -28,17 +30,20 @@
                                 </div>
 
                                 <div class="form-group">
-                                    What offer do you want in trade: @Html.EnumDropDownListFor(f => f.PayOff.WithFavor, new {@class="btn btn-info"})
+                                    What offer do you want in trade: 
+                                    @Html.EnumDropDownListFor(f => f.PayOff.WithFavor, new {@class="btn btn-info"})
                                 </div>
 
                                 <div class="input-group col-md-6 col-md-push-3 input text-center">
                                     <div class="form-group">
-                                        <input class="form-control text-center" placeholder="Amount of money in exchange" type="number">
+                                        <input class="form-control text-center" placeholder="Amount of $ in exchange" type="number">
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
-                                   What category is your offer: <br/> @Html.EnumDropDownListFor(f => f.FavorCategory, new { @class = "btn btn-info" })
+                                   What category is your offer: 
+                                    <br/> 
+                                    @Html.EnumDropDownListFor(f => f.FavorCategory, new { @class = "btn btn-info" })
                                 </div>
                                 
                                 <div class="form-group">
@@ -47,10 +52,8 @@
                                         @Html.EnumDropDownListFor(f => f.FavorType, new { @class = "btn btn-info" })
                                     </div>
                                 </div>
-                                
-                            
-                                
-                                <br />
+                                <hr />
+
                                 <br />
                                 <div class="footer text-center">
                                     <input type="submit" value="Create" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Creating">
