@@ -30,28 +30,6 @@
 <br />
 
 <div>
-    <div class="text-center">
-        <ul class="pagination pagination-primary">
-            @if (leftArrowIsActive)
-            {
-                <li>@Html.ActionLink("<", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage }, null)</li>
-            }
-            else
-            {
-                <li class="fade"><a href="#"><</a></li>
-            }
-            <li class="active"><a href="#">@ViewBag.CurrentPage</a></li>
-            @if (rightArrowIsActive)
-            {
-                <li>@Html.ActionLink(">", "ListAllTypeDoing", "Favor", new { @currentPage = nextPage }, null)</li>
-            }
-            else
-            {
-                <li class="fade"><a href="#">></a></li>
-            }
-        </ul>
-    </div>
-
 
     @foreach (var singleFavorModel in Model)
     {
@@ -83,4 +61,25 @@
 
     }
 
+    <div class="text-center navbar-fixed-bottom" style="margin-bottom:60px">
+        <ul class="pagination pagination-primary">
+            @if (leftArrowIsActive)
+            {
+                <li>@Html.ActionLink("<", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage }, null)</li>
+            }
+            else
+            {
+                <li class="fade"><a href="#"><</a></li>
+            }
+            <li class="active"><a href="#">@ViewBag.CurrentPage</a></li>
+            @if (rightArrowIsActive)
+            {
+                <li>@Html.ActionLink(">", "ListAllTypeDoing", "Favor", new { @currentPage = nextPage }, null)</li>
+            }
+            else
+            {
+                <li class="fade"><a href="#">></a></li>
+            }
+        </ul>
+    </div>
 </div>
