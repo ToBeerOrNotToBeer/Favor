@@ -26,3 +26,7 @@ textarea {
 .form-group.is-focused .form-control {
     background-image: linear-gradient(#304FFE, #304FFE), linear-gradient(#D2D2D2, #D2D2D2) !important;
 }
+
+.progress {
+    height: 100px;
+}
