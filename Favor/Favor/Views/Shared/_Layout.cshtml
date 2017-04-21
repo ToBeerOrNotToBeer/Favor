@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Favor</title>
+    <link rel="icon" href="~/Content/img/favorTab.jpg" />
     
 </head>
 <body background="~/Content/img/BG.jpg" class="signup-page">   
@@ -41,9 +42,11 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - ToBeerOrNotToBeer corporation</p>
+        <br />
+        <footer class="navbar-static-top text-center">
+            <div class="col-md-6 col-md-push-3 input text-center">
+                <hr />
+                <p>&copy; @DateTime.Now.Year - ToBeerOrNotToBeer corporation</p></div>
         </footer>
     </div>
     
