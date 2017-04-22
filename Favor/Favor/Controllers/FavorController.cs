@@ -135,6 +135,57 @@ namespace Favor.Controllers
             return RedirectToAction("Details", new { @id = fullFavor.Id });
         }
 
+        [HttpGet]
+        [Authorize]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var db = new FavorDbContext();
+
+            var fullFavor = db.Favors.FirstOrDefault(f => f.Id == id);
+
+            if (fullFavor == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var favorDeleteModel = new FavorDeleteViewModel
+            {
+                Title = fullFavor.Title,
+                Description = fullFavor.Description,
+                Id = fullFavor.Id
+            };
+
+            return View(favorDeleteModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Delete(FavorDeleteViewModel favorDeleteViewModel)
+        {
+            if (favorDeleteViewModel ==null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var db = new FavorDbContext();
+            var fullFavor = db.Favors.FirstOrDefault(f => f.Id == favorDeleteViewModel.Id);
+            if (fullFavor ==null)
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+
+            db.Favors.Remove(fullFavor);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Home");
+
+        }
+
         [Authorize]
         public ActionResult ListAllTypeSearch(int currentPage = 1, Category category = (Category)0)
         {

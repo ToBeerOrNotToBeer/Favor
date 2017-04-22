@@ -205,6 +205,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\FavorDbContext.cs" />
+    <Compile Include="Models\FavorModels\FavorDeleteViewModel.cs" />
     <Compile Include="Models\FavorModels\FavorDetailViewModel.cs" />
     <Compile Include="Models\FavorModels\FavorEditViewModel.cs" />
     <Compile Include="Models\FavorModels\ListAllFavorsModel.cs" />
@@ -276,6 +277,7 @@
     <Content Include="Views\Favor\ListAllTypeDoing.cshtml" />
     <Content Include="Views\Profile\Profile.cshtml" />
     <Content Include="Views\Favor\Edit.cshtml" />
+    <Content Include="Views\Favor\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
