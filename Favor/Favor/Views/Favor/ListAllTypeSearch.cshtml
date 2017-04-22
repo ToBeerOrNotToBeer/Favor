@@ -19,7 +19,7 @@
         leftArrowIsActive = false;
     }
 
-    if (Model.Count < 5)
+    if (Model.Count < 4)
     {
         nextPage = ViewBag.CurrentPage;
 
@@ -31,7 +31,7 @@
 <br />
 <div">
 
-    <div class="col-md-3 dropdown">
+    <div class="col-md-3 dropdown" style="margin-left:467px">
         <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             Select category
             <b class="caret"></b>
@@ -63,7 +63,7 @@
         string link = $"/Favor/Details/{singleFavorModel.Id}";
 
         <div class="wrapper">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card card-signup" style="margin-top:40px">
                     <form class="form" method="post">
                         <div class="header header-info text-center">
