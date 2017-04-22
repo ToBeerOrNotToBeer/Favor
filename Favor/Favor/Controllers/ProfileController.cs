@@ -26,5 +26,26 @@ namespace Favor.Controllers
 
             return View(userToView);
         }
+       
+
+        [HttpGet]
+        public ActionResult OtherProfile(string otherProfileId)
+        {
+            if (otherProfileId==null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var db = new FavorDbContext();
+
+            var otherUser = db.Users.Find(otherProfileId);
+
+            if (otherUser ==null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(otherUser);
+        }
     }
 }

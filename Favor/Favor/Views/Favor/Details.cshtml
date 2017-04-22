@@ -2,6 +2,13 @@
 
 @{
     ViewBag.Title = "Details Page";
+
+    string url = $"/Profile/OtherProfile?otherProfileId={Model.User.Id}";
+    if (Model.User.Email == User.Identity.Name)
+    {
+        url = "/Profile/Profile";
+    }
+
 }
 
 <div class="wrapper">
@@ -16,7 +23,7 @@
                             <p class="text-divider"><strong>@Model.Description</strong> </p>
                         <hr />
                         <div class="col-md-6 col-md-push-3 input text-center"><span style="opacity:0.6">
-                        Posted from: <b><a href="#">@Model.UserFullName</a></b> </span>
+                        Posted from: <b><a href="@url">@Model.UserFullName</a></b> </span>
                             <hr />
                             <br />
 

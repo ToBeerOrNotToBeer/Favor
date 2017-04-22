@@ -278,6 +278,7 @@
     <Content Include="Views\Profile\Profile.cshtml" />
     <Content Include="Views\Favor\Edit.cshtml" />
     <Content Include="Views\Favor\Delete.cshtml" />
+    <Content Include="Views\Profile\OtherProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
