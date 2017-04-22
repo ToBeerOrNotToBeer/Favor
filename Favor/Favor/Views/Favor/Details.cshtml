@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Details Page";
 }
+
 <div class="wrapper">
     <div class="container">
         <div class="row">
@@ -15,17 +16,17 @@
                             <p class="text-divider"><strong>@Model.Description</strong> </p>
                         <hr />
                         <div class="col-md-6 col-md-push-3 input text-center"><span style="opacity:0.6">
-                        POSTED FROM: FULL NAME   </span>
+                        POSTED FROM: <a href="#">@Model.UserFullName</a> </span>
                             <hr />
                             <br />
 
                             <div class="col-md-6"
                             <div class="footer text-center">
-                                <input type="submit" value="PAYOFF Favor" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Creating">
+                                <input type="submit" value="PAYOFF Favor" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="@Model.PayOff.WithFavor.ToString()">
                             </div>
 
                             <div class="footer text-center">
-                                <input type="submit" value="PAYOFF Money" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Creating">
+                                <input type="submit" value="PAYOFF Money" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="@Model.PayOff.WithMoney.ToString()">
                             </div>
 
                             <div class="dropdown">

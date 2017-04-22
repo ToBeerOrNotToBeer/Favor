@@ -32,7 +32,7 @@
 <div>
 
     <div class="col-md-3 dropdown">
-        <a href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+        <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
             Select category
             <b class="caret"></b>
         </a>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-8 text-center col-md-offset-2">
                             <p>
-                                @singleFavorModel.Description.Substring(0, singleFavorModel.Description.Length < 50 ? singleFavorModel.Description.Length : 50)...
+                                @singleFavorModel.Description.Substring(0, singleFavorModel.Description.Length < 20 ? singleFavorModel.Description.Length : 20)...
                             </p>
                             <br />
                             <br />
@@ -85,8 +85,6 @@
 
 
     }
-
- 
 
     <div class="text-center navbar-fixed-bottom" style="margin-bottom:60px">
         <ul class="pagination pagination-primary">

@@ -65,7 +65,7 @@ namespace Favor.Controllers
                 Title = fullFavor.Title,
                 Description = fullFavor.Description,
                 CreationDate = fullFavor.CreationDate,
-                UserEmail = fullFavor.User.Email,
+                UserFullName = fullFavor.User.FullName,
                 PayOff = fullFavor.PayOff,
                 FavorType = fullFavor.FavorType
             };

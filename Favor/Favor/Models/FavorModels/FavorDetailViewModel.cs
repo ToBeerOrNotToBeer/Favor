@@ -19,7 +19,7 @@ namespace Favor.Models.FavorModels
         
         public string Description { get; set; }
 
-        public string UserEmail { get; set; }
+        public string UserFullName { get; set; }
 
         public PayOff PayOff { get; set; }
         
