@@ -1,0 +1,49 @@
+﻿@model Favor.Models.FavorModels.FavorDeleteViewModel
+
+@{ 
+    ViewBag.Title = "Delete";
+}
+
+@using (Html.BeginForm("Delete", "Favor", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-sm-2 col-sm-offset-2">
+                    <div class="card card-signup">
+                        <form class="form" method="post">
+                            <div class="header header-info text-center">
+                                <h3>Delete Offer</h3>
+                            </div>
+                            <hr />
+                            <div class="col-md-6 col-md-push-3 input text-center">
+
+                                <div class="input-group col-md-6 col-md-push-3 input text-center">
+                                    <div class="form-group">
+                                        <input class="form-control text-center" name="Title" readonly="readonly" type="text" value="@Model.Title">
+                                    </div>
+                                </div>
+
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <textarea class="form-control text-center" readonly="readonly" name="Description" rows="6" cols="50" placeholder="Enter your new Description here">@Model.Description</textarea>
+                                    </span>
+                                </div>                             
+                                <hr />
+
+                                <br />
+                                <div class="footer text-center">
+                                    <form action="/Favor/Details/@Model.Id">
+                                        <input type="submit" value="Cancel" class="btn btn-default btn-round" data-toggle="tooltip" data-placement="top" title="Cancel Deleting">
+                                    </form>
+                                    <input type="submit" value="Delete" class="btn btn-danger btn-round" data-toggle="tooltip" data-placement="top" title="Finish Deleting">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
