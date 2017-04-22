@@ -62,6 +62,7 @@ namespace Favor.Controllers
 
             FavorDetailViewModel favorDetailModel = new FavorDetailViewModel
             {
+                Id = fullFavor.Id,
                 Title = fullFavor.Title,
                 Description = fullFavor.Description,
                 CreationDate = fullFavor.CreationDate,
@@ -71,6 +72,67 @@ namespace Favor.Controllers
             };
 
             return View(favorDetailModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var db = new FavorDbContext();
+
+            var fullFavor = db.Favors.Include(f => f.PayOff).FirstOrDefault(f => f.Id == id);
+
+            if (fullFavor == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var favorEditViewModel = new FavorEditViewModel
+            {
+                Id = fullFavor.Id,
+                Title = fullFavor.Title,
+                Description = fullFavor.Description,
+                PayOff = fullFavor.PayOff,
+                FavorType = fullFavor.FavorType,
+                Category = fullFavor.FavorCategory
+            };
+
+            return View(favorEditViewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult Edit(FavorEditViewModel favorEditViewModel)
+        {
+            if (favorEditViewModel == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var db = new FavorDbContext();
+
+            var fullFavor = db.Favors.FirstOrDefault(f => f.Id == favorEditViewModel.Id);
+
+            if (fullFavor == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            fullFavor.Title = favorEditViewModel.Title;
+            fullFavor.Description = favorEditViewModel.Description;
+            fullFavor.PayOff = favorEditViewModel.PayOff;
+            fullFavor.FavorType = favorEditViewModel.FavorType;
+            fullFavor.FavorCategory = favorEditViewModel.Category;
+
+            db.Entry(fullFavor).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Details", new { @id = fullFavor.Id });
         }
 
         [Authorize]

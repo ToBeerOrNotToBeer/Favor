@@ -206,6 +206,7 @@
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\FavorDbContext.cs" />
     <Compile Include="Models\FavorModels\FavorDetailViewModel.cs" />
+    <Compile Include="Models\FavorModels\FavorEditViewModel.cs" />
     <Compile Include="Models\FavorModels\ListAllFavorsModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -274,6 +275,7 @@
     <Content Include="Views\Favor\ListAllTypeSearch.cshtml" />
     <Content Include="Views\Favor\ListAllTypeDoing.cshtml" />
     <Content Include="Views\Profile\Profile.cshtml" />
+    <Content Include="Views\Favor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
