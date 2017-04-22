@@ -5611,7 +5611,7 @@ body.modal-open,
 }
 
 .modal {
-  position: fixed;
+  position: center;
   top: 0;
   right: 0;
   bottom: 0;
@@ -5639,7 +5639,7 @@ body.modal-open,
 }
 
 .modal-dialog {
-  z-index: 1050;
+  z-index: 600;
   width: auto;
   padding: 10px;
   margin-right: auto;
@@ -5695,7 +5695,7 @@ body.modal-open,
 
 .modal-body {
   position: relative;
-  padding: 20px;
+  padding: 500px;
 }
 
 .modal-footer {
