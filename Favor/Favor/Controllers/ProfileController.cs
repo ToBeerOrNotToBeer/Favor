@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +18,7 @@ namespace Favor.Controllers
 
             var currUserId = this.User.Identity.GetUserId();
 
-            var userToView = db.Users.FirstOrDefault(u => u.Id == currUserId);
+            var userToView = db.Users.Include(u=> u.MyFavors).FirstOrDefault(u => u.Id == currUserId);
 
             if (userToView == null)
             {
