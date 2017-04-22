@@ -1,5 +1,9 @@
 ﻿@model Favor.Data.Favor
 
+@{ 
+    ViewBag.Title = "Create";
+}
+
 @using (Html.BeginForm("Create", "Favor", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     <div class="wrapper">

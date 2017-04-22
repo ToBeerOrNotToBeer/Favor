@@ -32,7 +32,7 @@ namespace Favor.Controllers
         [HttpGet]
         public ActionResult OtherProfile(string otherProfileId)
         {
-            if (otherProfileId==null)
+            if (otherProfileId == null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -41,7 +41,7 @@ namespace Favor.Controllers
 
             var otherUser = db.Users.Find(otherProfileId);
 
-            if (otherUser ==null)
+            if (otherUser == null)
             {
                 return RedirectToAction("Index", "Home");
             }
