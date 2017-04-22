@@ -3,22 +3,45 @@
 @{
     ViewBag.Title = "Details Page";
 }
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-sm-2 col-sm-offset-2">
+                <div class="card card-signup">
+                    <form class="form" method="post">
+                        <div class="header header-info text-center">
+                            <h1>@Model.Title</h1>
+                        </div>
+                            <p class="text-divider"><strong>@Model.Description</strong> </p>
+                        <hr />
+                        <div class="col-md-6 col-md-push-3 input text-center"><span style="opacity:0.6">
+                        POSTED FROM: FULL NAME   </span>
+                            <hr />
+                            <br />
 
-<h1>@Model.Title</h1>
-<div>
-    <p>
-        @Model.Description
-    </p>
-    <p>
-        @if (Model.FavorType == Favor.Data.FavorType.Seeks)
-        {
-            @: In exchange i WANT somthing from the category of @Model.PayOff.WithFavor.ToString() or @Model.PayOff.WithMoney.ToString()$
-        }
-        else
-        {
-            @: In exchange i GIVE somthing from the category of @Model.PayOff.WithFavor.ToString() or @Model.PayOff.WithMoney.ToString()$
-        }
-    </p>
+                            <div class="col-md-6"
+                            <div class="footer text-center">
+                                <input type="submit" value="PAYOFF Favor" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Creating">
+                            </div>
+
+                            <div class="footer text-center">
+                                <input type="submit" value="PAYOFF Money" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Finish Creating">
+                            </div>
+
+                            <div class="dropdown">
+                                <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Options
+                                <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Edit</a></li>
+                                    <li><a href="#">Delete</a></li>
+                                </ul>      
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<span>Posted from @Model.UserEmail</span>
-<span>Posted on @Model.CreationDate</span>

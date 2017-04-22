@@ -2,7 +2,7 @@
 {
     public static class PageConstants
     {
-        private static int countOfFavorsOnPage = 6;
+        private static int countOfFavorsOnPage = 5;
 
         public static int CountOfFavorsOnPage { get { return countOfFavorsOnPage; } }
     }

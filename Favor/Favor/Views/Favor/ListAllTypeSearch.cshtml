@@ -7,6 +7,7 @@
 @{
     int previousPage = ViewBag.CurrentPage - 1;
     int nextPage = ViewBag.CurrentPage + 1;
+    int currentPage = ViewBag.CurrentPage;
 
     bool leftArrowIsActive = true;
     bool rightArrowIsActive = true;
@@ -18,7 +19,7 @@
         leftArrowIsActive = false;
     }
 
-    if (Model.Count < 6)
+    if (Model.Count < 5)
     {
         nextPage = ViewBag.CurrentPage;
 
@@ -28,7 +29,7 @@
 
 <br />
 <br />
-<div>
+<div">
 
     <div class="col-md-3 dropdown">
         <a href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
@@ -36,46 +37,26 @@
             <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-            <li>@Html.ActionLink("All", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 0 }, null)</li>
-            <li>@Html.ActionLink("Machine service", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 1 }, null)</li>
-            <li>@Html.ActionLink("Personal care", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 2 }, null)</li>
-            <li>@Html.ActionLink("Art", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 3 }, null)</li>
-            <li>@Html.ActionLink("Media", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 4 }, null)</li>
-            <li>@Html.ActionLink("Design", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 5 }, null)</li>
-            <li>@Html.ActionLink("House care", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 6 }, null)</li>
-            <li>@Html.ActionLink("Garden care", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 7 }, null)</li>
-            <li>@Html.ActionLink("Animal care", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 8 }, null)</li>
-            <li>@Html.ActionLink("Social activities", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 9 }, null)</li>
-            <li>@Html.ActionLink("Education", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 10 }, null)</li>
-            <li>@Html.ActionLink("DIY", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 11 }, null)</li>
-            <li>@Html.ActionLink("Online service", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 12 }, null)</li>
-            <li>@Html.ActionLink("Software service", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 13 }, null)</li>
-            <li>@Html.ActionLink("Hardware service", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 14 }, null)</li>
-            <li>@Html.ActionLink("Other", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = 15 }, null)</li>
+            <li>@Html.ActionLink("All", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 0 }, null)</li>
+            <li>@Html.ActionLink("Machine service", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 1 }, null)</li>
+            <li>@Html.ActionLink("Personal care", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 2 }, null)</li>
+            <li>@Html.ActionLink("Art", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 3 }, null)</li>
+            <li>@Html.ActionLink("Media", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 4 }, null)</li>
+            <li>@Html.ActionLink("Design", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 5 }, null)</li>
+            <li>@Html.ActionLink("House care", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 6 }, null)</li>
+            <li>@Html.ActionLink("Garden care", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 7 }, null)</li>
+            <li>@Html.ActionLink("Animal care", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 8 }, null)</li>
+            <li>@Html.ActionLink("Social activities", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 9 }, null)</li>
+            <li>@Html.ActionLink("Education", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 10 }, null)</li>
+            <li>@Html.ActionLink("DIY", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 11 }, null)</li>
+            <li>@Html.ActionLink("Online service", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 12 }, null)</li>
+            <li>@Html.ActionLink("Software service", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 13 }, null)</li>
+            <li>@Html.ActionLink("Hardware service", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 14 }, null)</li>
+            <li>@Html.ActionLink("Other", "ListAllTypeSearch", "Favor", new { @currentPage = currentPage, @category = 15 }, null)</li>
         </ul>
     </div>
 
-    <div class="text-center navbar-fixed-bottom" style="margin-bottom:60px">
-        <ul class="pagination pagination-primary">
-            @if (leftArrowIsActive)
-            {
-                <li>@Html.ActionLink("<", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage }, null)</li>
-            }
-            else
-            {
-                <li class="fade"><a href="#"><</a></li>
-            }
-            <li class="active"><a href="#">@ViewBag.CurrentPage</a></li>
-            @if (rightArrowIsActive)
-            {
-                <li>@Html.ActionLink(">", "ListAllTypeSearch", "Favor", new { @currentPage = nextPage }, null)</li>
-            }
-            else
-            {
-                <li class="fade"><a href="#">></a></li>
-            }
-        </ul>
-    </div>
+    
 
     @foreach (var singleFavorModel in Model)
     {
@@ -105,5 +86,25 @@
                 </div>
                 
     }
-
+    <div class="text-center navbar-fixed-bottom" style="margin-bottom:60px">
+        <ul class="pagination pagination-primary">
+            @if (leftArrowIsActive)
+            {
+                <li>@Html.ActionLink("<", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage }, null)</li>
+            }
+            else
+            {
+                <li class="fade"><a href="#"><</a></li>
+            }
+            <li class="active"><a href="#">@ViewBag.CurrentPage</a></li>
+            @if (rightArrowIsActive)
+            {
+                <li>@Html.ActionLink(">", "ListAllTypeSearch", "Favor", new { @currentPage = nextPage }, null)</li>
+            }
+            else
+            {
+                <li class="fade"><a href="#">></a></li>
+            }
+        </ul>
+    </div>
 </div>

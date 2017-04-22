@@ -4,9 +4,10 @@
     ViewBag.Title = "Doing";
 }
 
-@{ 
+@{
     int previousPage = ViewBag.CurrentPage - 1;
     int nextPage = ViewBag.CurrentPage + 1;
+    int currentPage = ViewBag.CurrentPage;
 
     bool leftArrowIsActive = true;
     bool rightArrowIsActive = true;
@@ -18,14 +19,13 @@
         leftArrowIsActive = false;
     }
 
-    if (Model.Count < 6)
+    if (Model.Count < 5)
     {
         nextPage = ViewBag.CurrentPage;
 
         rightArrowIsActive = false;
     }
 }
-
 <br />
 <br />
 
@@ -37,22 +37,22 @@
             <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-            <li>@Html.ActionLink("All", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 0 }, null)</li>
-            <li>@Html.ActionLink("Machine service", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 1 }, null)</li>
-            <li>@Html.ActionLink("Personal care", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 2 }, null)</li>
-            <li>@Html.ActionLink("Art", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 3 }, null)</li>
-            <li>@Html.ActionLink("Media", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 4 }, null)</li>
-            <li>@Html.ActionLink("Design", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 5 }, null)</li>
-            <li>@Html.ActionLink("House care", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 6 }, null)</li>
-            <li>@Html.ActionLink("Garden care", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 7 }, null)</li>
-            <li>@Html.ActionLink("Animal care", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 8 }, null)</li>
-            <li>@Html.ActionLink("Social activities", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 9 }, null)</li>
-            <li>@Html.ActionLink("Education", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 10 }, null)</li>
-            <li>@Html.ActionLink("DIY", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 11 }, null)</li>
-            <li>@Html.ActionLink("Online service", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 12 }, null)</li>
-            <li>@Html.ActionLink("Software service", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 13 }, null)</li>
-            <li>@Html.ActionLink("Hardware service", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 14 }, null)</li>
-            <li>@Html.ActionLink("Other", "ListAllTypeDoing", "Favor", new { @currentPage = previousPage, @category = 15 }, null)</li>
+            <li>@Html.ActionLink("All", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 0 }, null)</li>
+            <li>@Html.ActionLink("Machine service", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 1 }, null)</li>
+            <li>@Html.ActionLink("Personal care", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 2 }, null)</li>
+            <li>@Html.ActionLink("Art", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 3 }, null)</li>
+            <li>@Html.ActionLink("Media", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 4 }, null)</li>
+            <li>@Html.ActionLink("Design", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 5 }, null)</li>
+            <li>@Html.ActionLink("House care", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 6 }, null)</li>
+            <li>@Html.ActionLink("Garden care", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 7 }, null)</li>
+            <li>@Html.ActionLink("Animal care", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 8 }, null)</li>
+            <li>@Html.ActionLink("Social activities", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 9 }, null)</li>
+            <li>@Html.ActionLink("Education", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 10 }, null)</li>
+            <li>@Html.ActionLink("DIY", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 11 }, null)</li>
+            <li>@Html.ActionLink("Online service", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 12 }, null)</li>
+            <li>@Html.ActionLink("Software service", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 13 }, null)</li>
+            <li>@Html.ActionLink("Hardware service", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 14 }, null)</li>
+            <li>@Html.ActionLink("Other", "ListAllTypeDoing", "Favor", new { @currentPage = currentPage, @category = 15 }, null)</li>
         </ul>
     </div>
 
@@ -85,6 +85,8 @@
 
 
     }
+
+ 
 
     <div class="text-center navbar-fixed-bottom" style="margin-bottom:60px">
         <ul class="pagination pagination-primary">
