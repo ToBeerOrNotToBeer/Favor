@@ -68,7 +68,8 @@ namespace Favor.Controllers
                 CreationDate = fullFavor.CreationDate,
                 UserFullName = fullFavor.User.FullName,
                 PayOff = fullFavor.PayOff,
-                FavorType = fullFavor.FavorType
+                FavorType = fullFavor.FavorType,
+                User = fullFavor.User
             };
 
             return View(favorDetailModel);
@@ -295,6 +296,16 @@ namespace Favor.Controllers
             ViewBag.CurrentPage = currentPage;
 
             return View(allTypeDoing);
+        }
+
+
+        public bool IsUserAuthorizedToEdit(FavorDetailViewModel favor)
+        {
+            var isAdmin = this.User.IsInRole("Admin");
+            var isAuthor = favor.IsAuthor(this.User.Identity.Name);
+
+            return isAdmin || isAuthor;
+
         }
     }
 }

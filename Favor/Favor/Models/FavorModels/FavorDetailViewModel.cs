@@ -21,10 +21,17 @@ namespace Favor.Models.FavorModels
         
         public string Description { get; set; }
 
+        public User User { get; set; }
+
         public string UserFullName { get; set; }
 
         public PayOff PayOff { get; set; }
         
         public FavorType FavorType { get; set; }
+
+        public bool IsAuthor(string name)
+        {
+            return this.User.UserName.Equals(name);
+        }
     }
 }

@@ -42,5 +42,7 @@
         public Category FavorCategory { get; set; }
 
         public bool IsAccomplished { get; set; }
+
+        
     }
 }
