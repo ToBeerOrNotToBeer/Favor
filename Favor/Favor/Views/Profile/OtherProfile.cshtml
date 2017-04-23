@@ -4,8 +4,8 @@
     ViewBag.Title = Model.FullName + "'s profile";
 }
 
-<html lang="en">
 <head>
+
 </head>
 <body class="profile-page">
     <br />
@@ -21,26 +21,57 @@
             <div class="col-md-12 main main-raised"
                  style="margin: -50px 10px 10px 10px">
 
-                <div class="profile" style="margin: -40px 10px 10px 10px">
+                <div class="profile" style="margin: -90px 0px 100px 10px">
                     <div class="name text-center">
-                        <button class="btn btn-white text-center">
-                            <h1 class="title text-center">@Model.FullName</h1>
-                        </button><br />
+                        <div class="card-container col-md-4 col-md-offset-4">
+                            <div class="card">
+                                <div class="front" style="height:100px">
+                                    <div class="main">
+                                        <h1>@Model.FullName</h1>
+                                        <p class="text-center"><h5>Hover to send a message!</h5></p>
+                                    </div>
+                                </div>
+                                <!-- end front panel -->
+                                <div class="back">
+                                    <div class="content">
+                                        <div class="main">
+                                            <h1 style="margin: 5px 1px 0px 2px; opacity: 0.6">@Model.FullName</h1>
+
+                                            <div class="col-md-12 text-center">
+                                               
+                                                <input type="text" placeholder="Title" class="form-control">
+                                               
+                                                <textarea placeholder="Content" class="form-control" style="resize:vertical; height:140px"></textarea>
+                                                
+                                                <input type="submit" class="btn btn-primary btn-round" style="margin-bottom:-60px">
+                                                
+                                            </div>
 
 
-                        <div class="input text-center">
 
-                            <div class="footer text-center">
-                                <form action="#">
-                                    <input type="submit" value="Send Message" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="Send Message to this user">
-                                </form>
-                            </div>
-                            <hr />
-                        </div>
-                    </div>
+
+
+                                            <div class="stats-container">
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div> <!-- end back panel -->
+                        </div> <!-- end card -->
+                    </div> <!-- end card-container -->
+
+
+
+
                 </div>
+
             </div>
         </div>
-    </div></div>
+    </div>
+
+
 
 </body>
