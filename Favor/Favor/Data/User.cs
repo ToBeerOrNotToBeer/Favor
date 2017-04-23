@@ -16,6 +16,7 @@
             this.PendingFavors = new List<Favor>();
             this.AccomplishedFavors = new List<Favor>();
             this.SentFavors = new List<Favor>();
+            this.Messages = new List<Message>();
         }
 
         [Required]
@@ -28,6 +29,8 @@
         public List<Favor> AccomplishedFavors { get; set; }
 
         public List<Favor> SentFavors { get; set; }
+
+        public List<Message> Messages { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

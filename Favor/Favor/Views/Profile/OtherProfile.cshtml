@@ -39,11 +39,17 @@
 
                                             <div class="col-md-12 text-center">
                                                
-                                                <input type="text" placeholder="Title" class="form-control">
-                                               
-                                                <textarea placeholder="Content" class="form-control" style="resize:vertical; height:140px"></textarea>
-                                                
-                                                <input type="submit" class="btn btn-primary btn-round" style="margin-bottom:-60px">
+                                                @using (Html.BeginForm("SendMessage", "Message", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                                {
+                                                    <input name="Title" type="text" placeholder="Title" class="form-control" >
+
+                                                    <textarea name="Content" placeholder="Content" class="form-control" style="resize:vertical; height:140px"></textarea>
+
+                                                    <input name="SenderEmail" type="text" class="fade" value="@User.Identity.Name" />
+                                                    <input name="ReceiverId" type="text" class="fade" value="@Model.Id" />
+
+                                                    <input type="submit" class="btn btn-primary btn-round" style="margin-bottom:-60px">
+                                                }
                                                 
                                             </div>
 

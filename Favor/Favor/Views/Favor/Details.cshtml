@@ -55,7 +55,19 @@
                         </div>
                     </form>
 
-                    <p class="text-center"><a class="btn btn-white btn-round" href="/Home/Index"><i class="fa fa-chevron-left"></i></a></p>
+                    @{ 
+                        string backUrl = string.Empty;
+                        if (Model.FavorType == Favor.Data.FavorType.Offers)
+                        {
+                            backUrl = $"/Favor/ListAllTypeSearch";
+                        }
+                        else
+                        {
+                            backUrl = "/Favor/ListAllTypeDoing";
+                        }
+                    }
+
+                    <p class="text-center"><a class="btn btn-white btn-round" href="@backUrl"><i class="fa fa-chevron-left"></i></a></p>
                 </div>
 
 

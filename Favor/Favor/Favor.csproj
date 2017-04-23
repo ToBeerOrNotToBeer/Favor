@@ -192,10 +192,13 @@
     <Compile Include="Controllers\FavorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Data\Favor.cs" />
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\FavorType.cs" />
+    <Compile Include="Data\Message.cs" />
+    <Compile Include="Data\MessageType.cs" />
     <Compile Include="Data\PayOff.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -282,6 +285,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
