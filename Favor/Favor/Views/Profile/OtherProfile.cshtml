@@ -29,6 +29,17 @@
                                     <div class="main">
                                         <h1>@Model.FullName</h1>
                                         <p class="text-center"><h5>Hover to send a message!</h5></p>
+
+
+                                        <div class="alert alert-success" style="margin-top:110px">
+                                            <div class="container-fluid">
+                                                <div class="alert-icon">
+                                                    <i class="material-icons">check</i>
+                                                </div>
+                                                <b class="text-center">Message sent successfully!</b>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <!-- end front panel -->
@@ -45,10 +56,9 @@
 
                                                     <textarea name="Content" placeholder="Content" class="form-control" style="resize:vertical; height:140px"></textarea>
 
-                                                    <input name="SenderEmail" type="text" class="fade" value="@User.Identity.Name" />
-                                                    <input name="ReceiverId" type="text" class="fade" value="@Model.Id" />
-
-                                                    <input type="submit" class="btn btn-primary btn-round" style="margin-bottom:-60px">
+                                                    <input name="SenderEmail" type="text" class="fade" value="@User.Identity.Name" style="display: inline-block" />
+                                                    <input name="ReceiverId" type="text" class="fade" value="@Model.Id " style="display: inline-block" />
+                                                    <input type="submit" class="btn btn-primary btn-round" style="margin-bottom:-60px; display: inline-block">
                                                 }
                                                 
                                             </div>
