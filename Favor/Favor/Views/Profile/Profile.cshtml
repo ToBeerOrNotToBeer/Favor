@@ -123,18 +123,89 @@
                                             </div>
                                             <div class="tab-pane text-center" id="PendingFavors">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        asd <br /> asdf
+                                                    <div class="col-md-12 col-md-pull-2">
+                                                        <div>
+                                                            <br />
+                                                            <br />
+                                                            <br />
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    @foreach (var pendingFavor in Model.PendingFavors.OrderByDescending(f => f.Id))
+                                                                    {
+                                                                        var substr = pendingFavor.FavorContent.Substring(0, pendingFavor.FavorContent.Length < 50 ? pendingFavor.FavorContent.Length : 50) + "...";
+                                                                        <tr>
+                                                                            <td><a href="/Profile/OtherProfile?otherProfileId=@pendingFavor.SenderId"><b>@pendingFavor.SenderFullName</b></a></td>
+                                                                            <td>@pendingFavor.FavorTitle</td>
+                                                                            <td>@substr</td>
+                                                                            <td>@pendingFavor.TimeSent</td>
+                                                                            
+                                                                            <td class="td-actions text-right">
+
+                                                                                <form action="#" style="display:inline-block">
+                                                                                    <button type="submit" rel="tooltip" title="View Favor" class="btn btn-info btn-simple btn-xs">
+                                                                                        <i class="fa fa-info"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                                <form action="#" style="display:inline-block">
+                                                                                    <button type="submit" rel="tooltip" title="Edit Favor" class="btn btn-success btn-simple btn-xs">
+                                                                                        <i class="fa fa-pencil"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                                <form action="#" style="display:inline-block">
+                                                                                    <button type="submit" rel="tooltip" title="Delete Favor" class="btn btn-danger btn-simple btn-xs">
+                                                                                        <i class="fa fa-times"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="tab-pane text-center" id="SentFavors">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        wtf
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        OMG
+                                                    <div class="col-md-12 col-md-pull-2">
+                                                        <div>
+                                                            <br />
+                                                            <br />
+                                                            <br />
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    @foreach (var sentFavor in Model.SentFavors.OrderByDescending(f => f.Id))
+                                                                    {
+                                                                        var substr = sentFavor.FavorContent.Substring(0, sentFavor.FavorContent.Length < 50 ? sentFavor.FavorContent.Length : 50) + "...";
+                                                                        <tr>
+                                                                            <td><a href="/Profile/OtherProfile?otherProfileId=@sentFavor.RecieverId"><b>@sentFavor.RecieverFullName</b></a></td>
+                                                                            <td>@sentFavor.FavorTitle</td>
+                                                                            <td>@substr</td>
+                                                                            <td>@sentFavor.TimeSent</td>
+
+                                                                            <td class="td-actions text-right">
+
+                                                                                <form action="#" style="display:inline-block">
+                                                                                    <button type="submit" rel="tooltip" title="View Favor" class="btn btn-info btn-simple btn-xs">
+                                                                                        <i class="fa fa-info"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                                <form action="#" style="display:inline-block">
+                                                                                    <button type="submit" rel="tooltip" title="Edit Favor" class="btn btn-success btn-simple btn-xs">
+                                                                                        <i class="fa fa-pencil"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                                <form action="#" style="display:inline-block">
+                                                                                    <button type="submit" rel="tooltip" title="Delete Favor" class="btn btn-danger btn-simple btn-xs">
+                                                                                        <i class="fa fa-times"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -161,16 +232,7 @@
                                                                     @foreach (var message in Model.Messages.OrderByDescending(u=> u.Id))
                                                                     {
                                                                         <tr>
-                                                                            @if (message.Type == Favor.Data.MessageType.FromAdmin)
-                                                                            {
-                                                                                <td style="color:red"><strong>@message.Type.ToString()</strong></td>
-                                                                            }
-                                                                            else
-                                                                            {
-                                                                                <td>@message.Type.ToString()</td>
-                                                                            }
-                                                                            
-                                                                            @if (message.Type == Favor.Data.MessageType.Received)
+                                                                             @if (message.Type == Favor.Data.MessageType.Received)
                                                                             {
                                                                                 var db = new Favor.Data.FavorDbContext();
                                                                                 var senderFullName = db.Users.FirstOrDefault(u => u.Email == message.SenderEmail);
@@ -200,6 +262,17 @@
                                                                                     <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id"><strong>@recieverFullName.FullName</strong></a></td>
                                                                                 }
                                                                             }
+
+                                                                            @if (message.Type == Favor.Data.MessageType.FromAdmin)
+                                                                            {
+                                                                                <td style="color:red"><strong>@message.Type.ToString()</strong></td>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <td>@message.Type.ToString()</td>
+                                                                            }
+                                                                            
+                                                                           
 
 
                                                                             <td>@message.Title</td>

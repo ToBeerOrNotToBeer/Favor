@@ -19,7 +19,11 @@ namespace Favor.Controllers
 
             var currUserId = this.User.Identity.GetUserId();
 
-            var userToView = db.Users.Include(u=> u.MyFavors).Include(u=> u.Messages).FirstOrDefault(u => u.Id == currUserId);
+            var userToView = db.Users.Include(u=> u.MyFavors)
+                .Include(u=> u.Messages)
+                .Include(u=> u.SentFavors)
+                .Include(u=> u.PendingFavors)
+                .FirstOrDefault(u => u.Id == currUserId);
 
             if (userToView == null)
             {

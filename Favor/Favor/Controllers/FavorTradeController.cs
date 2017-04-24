@@ -14,15 +14,29 @@ namespace Favor.Controllers
         [Authorize]
         public ActionResult ExecuteTheTrade(int favorId, string recieverId, string tradeOff)
         {
+            if (User.Identity.GetUserId() == recieverId)
+            {
+                return RedirectToAction("Details", "Favor", new { @id = favorId });
+            }
+
             if (!ParamsAreValid(recieverId, tradeOff))
             {
                 return RedirectToAction("Index", "Home");
             }
+
             var db = new FavorDbContext();
+
+            if (db.FavorTradeModels.Any(f=> f.FavorId == favorId))
+            {
+                return RedirectToAction("Details", "Favor", new { @id = favorId });
+            }
+
             var exchangeFavor = db.Favors.Find(favorId);
 
+            var senderId = User.Identity.GetUserId();
+
             var senderUser = db.Users
-                .FirstOrDefault(u => u.Id == User.Identity.GetUserId());
+                .FirstOrDefault(u=> u.Id == senderId);
 
             var recieverUser = db.Users.Find(recieverId);
 
@@ -30,6 +44,7 @@ namespace Favor.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
 
             var favorTradeModel = new FavorTradeModel
             {
