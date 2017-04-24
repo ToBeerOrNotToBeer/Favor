@@ -150,6 +150,8 @@
                                                                             
                                                                             <td class="td-actions text-right">
 
+                                                                                <a href="/Favor/Details/@pendingFavor.FavorId" style="color: blue; margin-right: 10px"><i class="fa fa-info"></i></a>
+
                                                                                 <script>
                                                                                     function ConfirmTradeFavors(id) {
                                                                                         var x = confirm("Are you sure you want to accept the trade?");
@@ -204,6 +206,7 @@
 
                                                                             <td class="td-actions text-right">
 
+                                                                                <a href="/Favor/Details/@sentFavor.FavorId" style="color: blue; margin-right: 10px"><i class="fa fa-info"></i></a>
 
                                                                                 <script>
                                                                                      function ConfirmDeleteForSentFavors(id) {
@@ -229,11 +232,39 @@
                                             </div>
                                             <div class="tab-pane text-center" id="AccomplishedFavors">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        123
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        OMG
+                                                    <div class="col-md-12 col-md-pull-2">
+                                                        <div>
+                                                            <br />
+                                                            <br />
+                                                            <br />
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    @foreach (var accomplishedFavor in Model.AccomplishedFavors.OrderByDescending(f => f.Id))
+                                                                    {
+                                                                        var substr = accomplishedFavor.FavorContent.Substring(0, accomplishedFavor.FavorContent.Length < 50 ? accomplishedFavor.FavorContent.Length : 50) + "...";
+
+                                                                        var db = new Favor.Data.FavorDbContext();
+                                                                        var sender = db.Users.Find(accomplishedFavor.SenderId);
+
+                                                                        <tr>
+                                                                            @if (this.User.Identity.Name == sender.Email)
+                                                                            {
+                                                                                <td><a href="/Profile/OtherProfile?otherProfileId=@accomplishedFavor.ReceiverId"><b>@accomplishedFavor.ReceiverFullName</b></a></td>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <td><a href="/Profile/OtherProfile?otherProfileId=@accomplishedFavor.SenderId"><b>@accomplishedFavor.SenderFullName</b></a></td>
+                                                                            }
+
+                                                                            <td>@accomplishedFavor.FavorTitle</td>
+                                                                            <td>@substr</td>
+                                                                            <td>@accomplishedFavor.TradeOff</td>
+                                                                            <td>@accomplishedFavor.TimeSent</td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
