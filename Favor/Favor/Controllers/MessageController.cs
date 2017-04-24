@@ -40,6 +40,11 @@ namespace Favor.Controllers
 
             db.SaveChanges();
 
+            receiverUser.Messages.Last().MatchingId = receiverUser.Messages.Last().Id;
+            senderUser.Messages.Last().MatchingId = receiverUser.Messages.Last().MatchingId;
+
+            MessageManager.MessageHasBeenSent = true;
+
             return RedirectToAction("OtherProfile", "Profile", new { @otherProfileId = receiverUser.Id});
         }
     }

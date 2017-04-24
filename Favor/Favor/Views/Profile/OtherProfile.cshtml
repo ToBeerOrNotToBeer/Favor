@@ -30,15 +30,19 @@
                                         <h1>@Model.FullName</h1>
                                         <p class="text-center"><h5>Hover to send a message!</h5></p>
 
-
-                                        <div class="alert alert-success" style="margin-top:110px">
-                                            <div class="container-fluid">
-                                                <div class="alert-icon">
-                                                    <i class="material-icons">check</i>
+                                        @if (Favor.Data.MessageManager.MessageHasBeenSent)
+                                        {
+                                            <div class="alert alert-success" style="margin-top:110px">
+                                                <div class="container-fluid">
+                                                    <div class="alert-icon">
+                                                        <i class="material-icons">check</i>
+                                                    </div>
+                                                    <b class="text-center">Message sent successfully!</b>
                                                 </div>
-                                                <b class="text-center">Message sent successfully!</b>
                                             </div>
-                                        </div>
+
+                                            Favor.Data.MessageManager.MessageHasBeenSent = false;
+                                        }
 
                                     </div>
                                 </div>
