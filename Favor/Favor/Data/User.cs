@@ -15,7 +15,7 @@
         {
             this.MyFavors = new List<Favor>();
             this.PendingFavors = new List<FavorTradeModel>();
-            this.AccomplishedFavors = new List<FavorTradeModel>();
+            this.AccomplishedFavors = new List<AccomplishedTradeModel>();
             this.SentFavors = new List<FavorTradeModel>();
             this.Messages = new List<Message>();
         }
@@ -27,7 +27,7 @@
 
         public List<FavorTradeModel> PendingFavors { get; set; }
 
-        public List<FavorTradeModel> AccomplishedFavors { get; set; }
+        public List<AccomplishedTradeModel> AccomplishedFavors { get; set; }
 
         public List<FavorTradeModel> SentFavors { get; set; }
 
