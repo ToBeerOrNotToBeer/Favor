@@ -55,19 +55,7 @@
                         </div>
                     </form>
 
-                    @{ 
-                        string backUrl = string.Empty;
-                        if (Model.FavorType == Favor.Data.FavorType.Offers)
-                        {
-                            backUrl = $"/Favor/ListAllTypeSearch";
-                        }
-                        else
-                        {
-                            backUrl = "/Favor/ListAllTypeDoing";
-                        }
-                    }
-
-                    <p class="text-center"><a class="btn btn-white btn-round" href="@backUrl"><i class="fa fa-chevron-left"></i></a></p>
+                    <p class="text-center"><a class="btn btn-white btn-round" href="@Favor.Models.FavorModels.FavorDetailViewModel.LastUsedUrl"><i class="fa fa-chevron-left"></i></a></p>
                 </div>
 
 

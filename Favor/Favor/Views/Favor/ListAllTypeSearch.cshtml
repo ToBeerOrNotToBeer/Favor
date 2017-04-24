@@ -8,6 +8,7 @@
     int previousPage = ViewBag.CurrentPage - 1;
     int nextPage = ViewBag.CurrentPage + 1;
     int currentPage = ViewBag.CurrentPage;
+    int currentCategory = (int)ViewBag.CurrentCategory;
 
     bool leftArrowIsActive = true;
     bool rightArrowIsActive = true;
@@ -90,7 +91,7 @@
         <ul class="pagination pagination-primary">
             @if (leftArrowIsActive)
             {
-                <li>@Html.ActionLink("<", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage }, null)</li>
+                <li>@Html.ActionLink("<", "ListAllTypeSearch", "Favor", new { @currentPage = previousPage, @category = currentCategory }, null)</li>
             }
             else
             {
@@ -99,7 +100,7 @@
             <li class="active"><a href="#">@ViewBag.CurrentPage</a></li>
             @if (rightArrowIsActive)
             {
-                <li>@Html.ActionLink(">", "ListAllTypeSearch", "Favor", new { @currentPage = nextPage }, null)</li>
+                <li>@Html.ActionLink(">", "ListAllTypeSearch", "Favor", new { @currentPage = nextPage, @category = currentCategory }, null)</li>
             }
             else
             {

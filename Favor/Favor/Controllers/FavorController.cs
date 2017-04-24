@@ -238,6 +238,9 @@ namespace Favor.Controllers
             }
             
             ViewBag.CurrentPage = currentPage;
+            ViewBag.CurrentCategory = category;
+
+            FavorDetailViewModel.LastUsedUrl = $"/Favor/ListAllTypeSearch?currentPage={currentPage}&category={category}";
 
             return View(allTypeSearch);
         }
@@ -294,6 +297,9 @@ namespace Favor.Controllers
             }
 
             ViewBag.CurrentPage = currentPage;
+            ViewBag.CurrentCategory = category;
+
+            FavorDetailViewModel.LastUsedUrl = $"/Favor/ListAllTypeDoing?currentPage={currentPage}&category={category}";
 
             return View(allTypeDoing);
         }

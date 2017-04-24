@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Favor.Models.FavorModels;
 
 namespace Favor.Controllers
 {
@@ -24,6 +25,8 @@ namespace Favor.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
+            FavorDetailViewModel.LastUsedUrl = "/Profile/Profile";
 
             return View(userToView);
         }

@@ -29,6 +29,8 @@ namespace Favor.Models.FavorModels
         
         public FavorType FavorType { get; set; }
 
+        public static string LastUsedUrl { get; set; }
+
         public bool IsAuthor(string name)
         {
             return this.User.UserName.Equals(name);
