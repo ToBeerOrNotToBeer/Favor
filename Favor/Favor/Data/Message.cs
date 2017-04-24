@@ -8,6 +8,11 @@ namespace Favor.Data
 {
     public class Message
     {
+        public Message()
+        {
+            DateSent = DateTime.Now;
+        }
+
         public int Id { get; set; }
 
         [Required]
@@ -24,6 +29,8 @@ namespace Favor.Data
 
         public MessageType Type { get; set; }
 
+        public DateTime DateSent { get; set; }
+
         public static Message ToMessage(Message messageToPass)
         {
             return new Message
@@ -32,7 +39,8 @@ namespace Favor.Data
                 SenderEmail = messageToPass.SenderEmail,
                 Title = messageToPass.Title,
                 Content = messageToPass.Content,
-                Type = messageToPass.Type
+                Type = messageToPass.Type,
+                DateSent = messageToPass.DateSent
             };
         }
     }

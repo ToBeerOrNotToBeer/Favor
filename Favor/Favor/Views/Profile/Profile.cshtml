@@ -83,7 +83,6 @@
                                                 <div class="row text-center">
                                                     <div class="col-md-12 col-md-pull-2">
                                                         <div>
-                                                           
                                                             <br />
                                                             <br />
                                                             <br />
@@ -113,27 +112,12 @@
                                                                                     <i class="fa fa-times"></i>
                                                                                 </button>
                                                                             </form>
-
-                                                                           
-
-
-
-
-                                                                          </td>
+                                                                         </td>
                                                                     </tr>
-                                                            
                                                                 }
-                                                                </tbody >
-                                                                </table>
-
-                                                                <tbody>
-                                                              
-
-                                                                                                                          
-
-
-
-</div>
+                                                              </tbody >
+                                                          </table>                                                            
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -166,8 +150,59 @@
                                             </div>
                                             <div class="tab-pane text-center" id="Messages">
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                        OMG
+                                                    <div class="col-md-12 col-md-pull-2">
+                                                        
+                                                        <div>
+                                                            <br />
+                                                            <br />
+                                                            <br />
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    @foreach (var message in Model.Messages)
+                                                                    {
+                                                                       
+                                                                        <tr>
+                                                                            <td>@message.Type.ToString()</td>
+                                                                            @if (message.Type == Favor.Data.MessageType.Received)
+                                                                            {
+                                                                                var db = new Favor.Data.FavorDbContext();
+                                                                                var senderFullName = db.Users.FirstOrDefault(u => u.Email == message.SenderEmail);
+                                                                                if (senderFullName != null)
+                                                                                {
+                                                                                    <td><a href="/Profile/OtherProfile?otherProfileId=@senderFullName.Id">@senderFullName.FullName</a></td>
+                                                                                }
+
+
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                var db = new Favor.Data.FavorDbContext();
+
+                                                                                var recieverFullName = db.Users.FirstOrDefault(u => u.Id == message.ReceiverId);
+                                                                                if (recieverFullName != null)
+                                                                                {
+                                                                                    <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id">@recieverFullName.FullName</a></td>
+                                                                                }
+                                                                            }
+                                                                          
+
+                                                                            <td>@message.Title</td>
+                                                                            <td>@message.Content</td>
+                                                                            <td>@message.DateSent</td>
+                                                                            <td class="td-actions text-right">                                       
+                                                                                <form action="#" style="display:inline-block">
+                                                                                    <button type="submit" rel="tooltip" title="Delete Favor" class="btn btn-danger btn-simple btn-xs">
+                                                                                        <i class="fa fa-times"></i>
+                                                                                    </button>
+                                                                                </form>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+
+
                                                     </div>
                                                 </div>
 
