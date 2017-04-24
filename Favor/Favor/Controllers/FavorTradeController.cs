@@ -12,14 +12,66 @@ namespace Favor.Controllers
     public class FavorTradeController : Controller
     {
         [Authorize]
-        public ActionResult ExecuteTheTrade(int favorId, string recieverId, string tradeOff)
+        public ActionResult AcceptTrade(int? id)
+        {
+            if (!ParamsAreValid(id))
+            {
+                return RedirectToAction("Profile", "Profile");
+            }
+
+            var db = new FavorDbContext();
+
+            var favorTradeModel = db.FavorTradeModels.Find(id);
+
+            if (!ParamsAreValid(favorTradeModel))
+            {
+                return RedirectToAction("Profile", "Profile");
+            }
+
+            var receiverUser = db.Users.Find(favorTradeModel.RecieverId);
+            var senderUser = db.Users.Find(favorTradeModel.SenderId);
+
+            if (!ParamsAreValid(receiverUser, senderUser))
+            {
+                return RedirectToAction("Profile", "Profile");
+            }
+
+            return RedirectToAction("Profile", "Profile");
+        }
+
+        [Authorize]
+        public ActionResult CancelTrade(int? id)
+        {
+            if (!ParamsAreValid(id))
+            {
+                return RedirectToAction("Profile", "Profile");
+            }
+
+            var db = new FavorDbContext();
+
+            var favorTradeModel = db.FavorTradeModels.Find(id);
+
+            if (!ParamsAreValid(favorTradeModel))
+            {
+                return RedirectToAction("Profile", "Profile");
+            }
+
+            db.FavorTradeModels.Remove(favorTradeModel);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Profile", "Profile");
+        }
+
+        [Authorize]
+        public ActionResult ExecuteTheTrade(int? favorId, string recieverId, string tradeOff)
         {
             if (User.Identity.GetUserId() == recieverId)
             {
                 return RedirectToAction("Details", "Favor", new { @id = favorId });
             }
 
-            if (!ParamsAreValid(recieverId, tradeOff))
+            if (!ParamsAreValid(favorId, recieverId, tradeOff))
             {
                 return RedirectToAction("Index", "Home");
             }
