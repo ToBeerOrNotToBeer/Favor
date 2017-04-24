@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="footer text-center">
-                                <input type="submit" value="PAYOFF Money" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="@Model.PayOff.WithMoney.ToString()">
+                                <input type="submit" value="PAYOFF Money" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="@Model.PayOff.WithMoney.ToString("F2")">
                             </div>
                             @if (User.IsInRole("Admin") || Model.IsAuthor(User.Identity.Name))
                             {
@@ -57,7 +57,6 @@
 
                     <p class="text-center"><a class="btn btn-white btn-round" href="@Favor.Models.FavorModels.FavorDetailViewModel.LastUsedUrl"><i class="fa fa-chevron-left"></i></a></p>
                 </div>
-
 
             </div>
         </div>
