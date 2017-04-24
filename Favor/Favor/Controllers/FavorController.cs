@@ -259,8 +259,7 @@ namespace Favor.Controllers
                 allTypeDoing = db
                                 .Favors
                                 .OrderByDescending(x => x.Id)
-                                .Where(f => f.FavorType == FavorType.Seeks &&
-                                                         !f.IsAccomplished)
+                                .Where(f => f.FavorType == FavorType.Seeks)
                                 .Skip((currentPage - 1) * PageConstants.CountOfFavorsOnPage)
                                 .Take(PageConstants.CountOfFavorsOnPage)
                                 .Select(f => new ListAllFavorsModel
@@ -278,9 +277,8 @@ namespace Favor.Controllers
                 allTypeDoing = db
                                 .Favors
                                 .OrderByDescending(x => x.Id)
-                                .Where(f => f.FavorType == FavorType.Seeks &&
-                                                         !f.IsAccomplished &&
-                                                         f.FavorCategory == category)
+                                .Where(f => f.FavorType == FavorType.Seeks
+                                                         && f.FavorCategory == category)
                                 .Skip((currentPage - 1) * PageConstants.CountOfFavorsOnPage)
                                 .Take(PageConstants.CountOfFavorsOnPage)
                                 .Select(f => new ListAllFavorsModel

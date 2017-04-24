@@ -12,7 +12,7 @@
         public Favor()
         {
             CreationDate = DateTime.Now;
-            IsAccomplished = false;
+           
         }
 
         public int Id { get; set; }
@@ -41,8 +41,5 @@
         [DisplayName("Favor Category")]
         public Category FavorCategory { get; set; }
 
-        public bool IsAccomplished { get; set; }
-
-        
     }
 }
