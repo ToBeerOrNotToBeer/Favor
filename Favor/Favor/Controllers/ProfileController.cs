@@ -23,6 +23,7 @@ namespace Favor.Controllers
                 .Include(u=> u.Messages)
                 .Include(u=> u.SentFavors)
                 .Include(u=> u.PendingFavors)
+                .Include(u=> u.AccomplishedFavors)
                 .FirstOrDefault(u => u.Id == currUserId);
 
             if (userToView == null)
