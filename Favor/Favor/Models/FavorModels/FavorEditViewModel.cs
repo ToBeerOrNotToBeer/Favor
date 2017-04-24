@@ -19,5 +19,7 @@ namespace Favor.Models.FavorModels
         public FavorType FavorType { get; set; }
 
         public Category Category { get; set; }
+
+        public static string UrlOpenedFrom { get; set; }
     }
 }

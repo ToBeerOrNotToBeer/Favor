@@ -27,6 +27,8 @@ namespace Favor.Controllers
             }
 
             FavorDetailViewModel.LastUsedUrl = "/Profile/Profile";
+            FavorDeleteViewModel.UrlOpenedFrom = "/Profile/Profile";
+            FavorEditViewModel.UrlOpenedFrom = "/Profile/Profile";
 
             return View(userToView);
         }

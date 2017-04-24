@@ -72,6 +72,9 @@ namespace Favor.Controllers
                 User = fullFavor.User
             };
 
+            FavorDeleteViewModel.UrlOpenedFrom = $"/Favor/Details/{id}";
+            FavorEditViewModel.UrlOpenedFrom = $"/Favor/Details/{id}";
+
             return View(favorDetailModel);
         }
 
@@ -183,8 +186,8 @@ namespace Favor.Controllers
 
             db.Favors.Remove(fullFavor);
             db.SaveChanges();
-            return RedirectToAction("Index", "Home");
 
+            return RedirectToAction("Index", "Home");
         }
 
         [Authorize]

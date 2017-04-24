@@ -169,7 +169,7 @@
                                                                                 var senderFullName = db.Users.FirstOrDefault(u => u.Email == message.SenderEmail);
                                                                                 if (senderFullName != null)
                                                                                 {
-                                                                                    <td><a href="/Profile/OtherProfile?otherProfileId=@senderFullName.Id">@senderFullName.FullName</a></td>
+                                                                                    <td><a href="/Profile/OtherProfile?otherProfileId=@senderFullName.Id"><strong>@senderFullName.FullName</strong></a></td>
                                                                                 }
 
 
@@ -181,7 +181,7 @@
                                                                                 var recieverFullName = db.Users.FirstOrDefault(u => u.Id == message.ReceiverId);
                                                                                 if (recieverFullName != null)
                                                                                 {
-                                                                                    <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id">@recieverFullName.FullName</a></td>
+                                                                                    <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id"><strong>@recieverFullName.FullName</strong></a></td>
                                                                                 }
                                                                             }
                                                                           
@@ -191,7 +191,7 @@
                                                                             <td>@message.DateSent</td>
                                                                             <td class="td-actions text-right">                                       
                                                                                 <form action="#" style="display:inline-block">
-                                                                                    <button type="submit" rel="tooltip" title="Delete Favor" class="btn btn-danger btn-simple btn-xs">
+                                                                                    <button type="submit" rel="tooltip" title="Delete Message" class="btn btn-danger btn-simple btn-xs">
                                                                                         <i class="fa fa-times"></i>
                                                                                     </button>
                                                                                 </form>
