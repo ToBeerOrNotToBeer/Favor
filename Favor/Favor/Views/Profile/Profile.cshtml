@@ -145,25 +145,35 @@
                                                                             <td><a href="/Profile/OtherProfile?otherProfileId=@pendingFavor.SenderId"><b>@pendingFavor.SenderFullName</b></a></td>
                                                                             <td>@pendingFavor.FavorTitle</td>
                                                                             <td>@substr</td>
+                                                                            <td>@pendingFavor.TradeOff</td>
                                                                             <td>@pendingFavor.TimeSent</td>
                                                                             
                                                                             <td class="td-actions text-right">
 
-                                                                                <form action="#" style="display:inline-block">
-                                                                                    <button type="submit" rel="tooltip" title="View Favor" class="btn btn-info btn-simple btn-xs">
-                                                                                        <i class="fa fa-info"></i>
-                                                                                    </button>
-                                                                                </form>
-                                                                                <form action="#" style="display:inline-block">
-                                                                                    <button type="submit" rel="tooltip" title="Edit Favor" class="btn btn-success btn-simple btn-xs">
-                                                                                        <i class="fa fa-pencil"></i>
-                                                                                    </button>
-                                                                                </form>
-                                                                                <form action="#" style="display:inline-block">
-                                                                                    <button type="submit" rel="tooltip" title="Delete Favor" class="btn btn-danger btn-simple btn-xs">
-                                                                                        <i class="fa fa-times"></i>
-                                                                                    </button>
-                                                                                </form>
+                                                                                <script>
+                                                                                    function ConfirmTradeFavors(id) {
+                                                                                        var x = confirm("Are you sure you want to accept the trade?");
+                                                                                        if (x)
+                                                                                            window.location.href = "/FavorTrade/AcceptTrade?id=" + Number(id);
+                                                                                        else
+                                                                                            return false;
+                                                                                    }
+                                                                                </script>
+
+                                                                                <a href="#" Onclick="return ConfirmTradeFavors(@pendingFavor.Id);" type="submit" name="actiondelete" value="1" style="color:green; margin-top:-4px ; margin-right: 10px"><i class="fa fa-check"></i></a>
+
+
+                                                                                <script>
+                                                                                    function ConfirmDeclineForPendingFavors(id) {
+                                                                                        var x = confirm("Are you sure you want to decline the trade?");
+                                                                                        if (x)
+                                                                                            window.location.href = "/FavorTrade/CancelTrade?id=" + Number(id);
+                                                                                        else
+                                                                                            return false;
+                                                                                    }
+                                                                                </script>
+
+                                                                                <a href="#" Onclick="return ConfirmDeclineForPendingFavors(@pendingFavor.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
                                                                             </td>
                                                                         </tr>
                                                                     }
@@ -189,25 +199,25 @@
                                                                             <td><a href="/Profile/OtherProfile?otherProfileId=@sentFavor.RecieverId"><b>@sentFavor.RecieverFullName</b></a></td>
                                                                             <td>@sentFavor.FavorTitle</td>
                                                                             <td>@substr</td>
+                                                                            <td>@sentFavor.TradeOff</td>
                                                                             <td>@sentFavor.TimeSent</td>
 
                                                                             <td class="td-actions text-right">
 
-                                                                                <form action="#" style="display:inline-block">
-                                                                                    <button type="submit" rel="tooltip" title="View Favor" class="btn btn-info btn-simple btn-xs">
-                                                                                        <i class="fa fa-info"></i>
-                                                                                    </button>
-                                                                                </form>
-                                                                                <form action="#" style="display:inline-block">
-                                                                                    <button type="submit" rel="tooltip" title="Edit Favor" class="btn btn-success btn-simple btn-xs">
-                                                                                        <i class="fa fa-pencil"></i>
-                                                                                    </button>
-                                                                                </form>
-                                                                                <form action="#" style="display:inline-block">
-                                                                                    <button type="submit" rel="tooltip" title="Delete Favor" class="btn btn-danger btn-simple btn-xs">
-                                                                                        <i class="fa fa-times"></i>
-                                                                                    </button>
-                                                                                </form>
+
+                                                                                <script>
+                                                                                     function ConfirmDeleteForSentFavors(id) {
+                                                                                         var x = confirm("Are you sure you want to cancel the trade?");
+                                                                                         if (x)
+                                                                                             window.location.href = "/FavorTrade/CancelTrade?id=" + Number(id);
+                                                                                         else
+                                                                                             return false;
+                                                                                     }
+                                                                                </script>
+
+                                                                                <a href="#" Onclick="return ConfirmDeleteForSentFavors(@sentFavor.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+
+
                                                                             </td>
                                                                         </tr>
                                                                     }
@@ -280,17 +290,14 @@
                                                                                 <td>@message.Type.ToString()</td>
                                                                             }
                                                                             
-                                                                           
-
-
                                                                             <td>@message.Title</td>
                                                                             <td>@message.Content</td>
                                                                             <td>@message.DateSent</td>
                                                                             <td class="td-actions text-right">                                                                               
                                                                                 <script>
-                                                                                function ConfirmDelete(id)
+                                                                                function ConfirmDeleteForMessages(id)
                                                                                 {
-                                                                                  var x = confirm("Are you sure you want to delete?");
+                                                                                  var x = confirm("Are you sure you want to delete the message?");
                                                                                     if (x)
                                                                                         window.location.href = "/Message/DeleteMessage?id=" + Number(id);
                                                                                   else
@@ -298,7 +305,7 @@
                                                                                 }
                                                                                 </script>
 
-                                                                                <a href="#" Onclick="return ConfirmDelete(@message.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+                                                                                <a href="#" Onclick="return ConfirmDeleteForMessages(@message.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
 
 
                                                                             </td>
