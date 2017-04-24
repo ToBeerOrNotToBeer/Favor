@@ -29,8 +29,14 @@ namespace Favor.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            MessageType forTheReciever = MessageType.Received;
+            if (this.User.IsInRole("Admin"))
+            {
+                forTheReciever = MessageType.FromAdmin;
+            }
+            
             var messageForTheReceiver = Message.ToMessage(sentMessage);
-            messageForTheReceiver.Type = MessageType.Received;
+            messageForTheReceiver.Type = forTheReciever;
 
             var messageForTheSender = Message.ToMessage(sentMessage);
             messageForTheSender.Type = MessageType.Sent;

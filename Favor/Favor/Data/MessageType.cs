@@ -4,6 +4,7 @@
     {
         None,
         Sent,
-        Received
+        Received,
+        FromAdmin
     }
 }

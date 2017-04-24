@@ -162,7 +162,15 @@
                                                                     {
                                                                        
                                                                         <tr>
-                                                                            <td>@message.Type.ToString()</td>
+                                                                            @if (message.Type == Favor.Data.MessageType.FromAdmin)
+                                                                            {
+                                                                                <td style="color:red"><strong>@message.Type.ToString()</strong></td>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <td>@message.Type.ToString()</td>
+                                                                            }
+                                                                            
                                                                             @if (message.Type == Favor.Data.MessageType.Received)
                                                                             {
                                                                                 var db = new Favor.Data.FavorDbContext();
@@ -174,7 +182,16 @@
 
 
                                                                             }
-                                                                            else
+                                                                            else if (message.Type == Favor.Data.MessageType.FromAdmin)
+                                                                            {
+                                                                                var db = new Favor.Data.FavorDbContext();
+                                                                                var senderFullName = db.Users.FirstOrDefault(u => u.Email == message.SenderEmail);
+                                                                                if (senderFullName != null)
+                                                                                {
+                                                                                    <td><a href="/Profile/OtherProfile?otherProfileId=@senderFullName.Id"><strong>@senderFullName.FullName</strong></a></td>
+                                                                                }
+                                                                            }
+                                                                            else if (message.Type == Favor.Data.MessageType.Sent)
                                                                             {
                                                                                 var db = new Favor.Data.FavorDbContext();
 
@@ -184,7 +201,7 @@
                                                                                     <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id"><strong>@recieverFullName.FullName</strong></a></td>
                                                                                 }
                                                                             }
-                                                                          
+
 
                                                                             <td>@message.Title</td>
                                                                             <td>@message.Content</td>
