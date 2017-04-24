@@ -28,8 +28,6 @@ namespace Favor.Data
         [Required]
         public string Content { get; set; }
 
-        public int MatchingId { get; set; }
-
         public MessageType Type { get; set; }
 
         public DateTime DateSent { get; set; }

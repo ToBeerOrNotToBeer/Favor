@@ -46,12 +46,26 @@ namespace Favor.Controllers
 
             db.SaveChanges();
 
-            receiverUser.Messages.Last().MatchingId = receiverUser.Messages.Last().Id;
-            senderUser.Messages.Last().MatchingId = receiverUser.Messages.Last().MatchingId;
-
             MessageManager.MessageHasBeenSent = true;
 
             return RedirectToAction("OtherProfile", "Profile", new { @otherProfileId = receiverUser.Id});
+        }
+
+        [Authorize]
+        public ActionResult DeleteMessage(int id)
+        {
+            var db = new FavorDbContext();
+
+            var messageToRemove = db.Messages.FirstOrDefault(m => m.Id == id);
+            if (messageToRemove != null)
+            {
+                db.Messages.Remove(messageToRemove);
+
+                db.SaveChanges();
+            }
+
+            
+            return RedirectToAction("Profile", "Profile");
         }
     }
 }

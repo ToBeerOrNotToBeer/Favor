@@ -13,6 +13,8 @@
         
         public IDbSet<Favor> Favors { get; set; }
 
+        public IDbSet<Message> Messages { get; set; }
+
         public static FavorDbContext Create()
         {
             return new FavorDbContext();
