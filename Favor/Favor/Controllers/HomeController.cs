@@ -18,5 +18,11 @@
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }
