@@ -4,7 +4,7 @@
     ViewBag.Title = "My profile";
 }
 
-<html lang="en">
+
 <head>
 </head>
 <body class="profile-page">
@@ -15,11 +15,11 @@
 <div class="wrapper">
     
     <div class="container header header-filter" style="background-image: url(../../Content/img/coolShit.png);
-            margin: -600px -500px -50px -5px; ">
+            margin: -600px -800px -50px -10px; ">
         </div>
             <div class="row">
                 <div class="col-md-12 main main-raised"
-                     style="margin: -50px 10px 10px 10px" >
+                     style="margin: -50px 10px 10px 5px" >
                     
                         <div class="profile" style="margin: -40px 10px 10px 10px">
                             <div class="name text-center">
@@ -87,6 +87,14 @@
                                                             <br />
                                                             <br />
                                                             <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="text-center">Title</th>
+                                                                        <th  class="text-center">Description</th>
+                                                                        <th  class="text-center">Date Posted</th>                                                                      
+                                                                        <th class="text-right">Actions</th>
+                                                                    </tr>
+                                                                </thead>
                                                             <tbody>
                                                                 @foreach (var favor in Model.MyFavors.OrderByDescending(f=>f.Id))
                                                                 {
