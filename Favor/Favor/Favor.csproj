@@ -198,6 +198,7 @@
     <Compile Include="Data\Category.cs" />
     <Compile Include="Data\FavorType.cs" />
     <Compile Include="Data\Message.cs" />
+    <Compile Include="Data\MessageManager.cs" />
     <Compile Include="Data\MessageType.cs" />
     <Compile Include="Data\PayOff.cs" />
     <Compile Include="Global.asax.cs">
