@@ -190,6 +190,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FavorController.cs" />
+    <Compile Include="Controllers\FavorTradeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Models\FavorModels\FavorDeleteViewModel.cs" />
     <Compile Include="Models\FavorModels\FavorDetailViewModel.cs" />
     <Compile Include="Models\FavorModels\FavorEditViewModel.cs" />
+    <Compile Include="Models\FavorModels\FavorTradeModel.cs" />
     <Compile Include="Models\FavorModels\ListAllFavorsModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\FavorTrade\" />
     <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>
