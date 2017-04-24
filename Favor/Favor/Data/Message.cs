@@ -22,6 +22,7 @@ namespace Favor.Data
         public string SenderEmail { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string Title { get; set; }
 
         [Required]

@@ -88,7 +88,7 @@
                                                             <br />
                                                             <table class="table">
                                                             <tbody>
-                                                                @foreach (var favor in Model.MyFavors)
+                                                                @foreach (var favor in Model.MyFavors.OrderByDescending(f=>f.Id))
                                                                 {
                                                                     var substr = favor.Description.Substring(0, favor.Description.Length < 50 ? favor.Description.Length : 50) + "...";
                                                                     <tr>
@@ -158,7 +158,7 @@
                                                             <br />
                                                             <table class="table">
                                                                 <tbody>
-                                                                    @foreach (var message in Model.Messages)
+                                                                    @foreach (var message in Model.Messages.OrderByDescending(u=> u.Id))
                                                                     {
                                                                        
                                                                         <tr>
