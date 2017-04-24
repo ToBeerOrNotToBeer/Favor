@@ -1,16 +1,22 @@
-﻿<!DOCTYPE html>
+﻿@model List<Favor.Data.User>
+
+@{ 
+    ViewBag.Title = "Admin Panel";
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
- 
+
     <title></title>
 </head>
 <body>
     <div class="wrapper">
         <div class="container header header-filter" style="background-image: url(../../Content/img/rounded_corners.png);
             margin: -500px -100px -100px 0px; overflow:hidden; border-radius: 20px 20px
-            " >
-            
+            ">
+
         </div>
         <div class="row col-md-offset-4">
             <div class="main main-raised col-md-6"
@@ -23,35 +29,48 @@
                         </button><br />
 
                         <div class="card">
-                        <!--TABLE STARTS HERE-->
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-left">Username</th>
-                                    <th class="text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-left">1</td>
+                            <!--TABLE STARTS HERE-->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left">Username</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int currUser = 0; currUser < Model.Count; currUser++)
+                                    {
+                                        var user = Model[currUser];
 
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                             
-                            </tbody>
-                        </table>
-                        <!--TABLE ENDS HERE-->
+                                        <tr>
+                                            <td class="text-left">@user.FullName</td>
+
+                                            <td class="td-actions text-right">
+                                                <script>
+                                                    function ConfirmUserDelete(id) {
+                                                        var x = confirm("Are you sure you want to delete the user?");
+                                                        if (x)
+                                                            window.location.href = "/Admin/DeleteUser?id=" + id;
+                                                        else
+                                                            return false;
+                                                    }
+                                                </script>
+
+                                                <a href="#" Onclick="return ConfirmUserDelete(@user.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                            <!--TABLE ENDS HERE-->
                         </div>
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 </body>
