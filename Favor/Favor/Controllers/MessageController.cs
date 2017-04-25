@@ -30,16 +30,27 @@ namespace Favor.Controllers
             }
 
             MessageType forTheReciever = MessageType.Received;
-            if (this.User.IsInRole("Admin"))
+            if (this.User != null && this.User.IsInRole("Admin"))
             {
                 forTheReciever = MessageType.FromAdmin;
+            }
+
+            if (sentMessage.Type == MessageType.System)
+            {
+                forTheReciever = MessageType.System;
+            }
+
+            MessageType forTheSender = MessageType.Sent;
+            if (sentMessage.Type == MessageType.System)
+            {
+                forTheSender = MessageType.System;
             }
             
             var messageForTheReceiver = Message.ToMessage(sentMessage);
             messageForTheReceiver.Type = forTheReciever;
 
             var messageForTheSender = Message.ToMessage(sentMessage);
-            messageForTheSender.Type = MessageType.Sent;
+            messageForTheSender.Type = forTheSender;
 
             receiverUser.Messages.Add(messageForTheReceiver);
             senderUser.Messages.Add(messageForTheSender);
