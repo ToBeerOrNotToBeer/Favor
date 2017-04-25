@@ -25,7 +25,7 @@ namespace Favor.Controllers
         }
 
         [Authorize]
-        public ActionResult DeleteUser(int? id)
+        public ActionResult DeleteUser(string id)
         {
             if (id == null)
             {

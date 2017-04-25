@@ -50,7 +50,7 @@
                                                     function ConfirmUserDelete(id) {
                                                         var x = confirm("Are you sure you want to delete the user?");
                                                         if (x)
-                                                            window.location.href = "/Admin/DeleteUser?id=" + id;
+                                                            window.location.href = "/Admin/DeleteUser?id=" + String(id);
                                                         else
                                                             return false;
                                                     }
