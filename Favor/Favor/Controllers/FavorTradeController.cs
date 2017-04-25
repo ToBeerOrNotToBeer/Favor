@@ -52,15 +52,53 @@ namespace Favor.Controllers
                 return RedirectToAction("Profile", "Profile");
             }
 
-            List<FavorTradeModel> allFavorTradeModels = db.FavorTradeModels.Where(ftm => ftm.FavorId == favorTradeModel.FavorId).ToList();
+            List<FavorTradeModel> allFavorTradeModels = db.FavorTradeModels
+                                                            .Where(ftm => ftm.FavorId == favorTradeModel.FavorId &&
+                                                                          ftm.SenderId != favorTradeModel.SenderId)
+                                                            .ToList();
+
+            MessageController test = new MessageController();
 
             for (int currFavorTradeModel = 0; currFavorTradeModel < allFavorTradeModels.Count; currFavorTradeModel++)
             {
+                var user = db.Users.Find(allFavorTradeModels[currFavorTradeModel].RecieverId);
+
+                Message cancelMessage = new Message
+                {
+                    ReceiverId = allFavorTradeModels[currFavorTradeModel].SenderId,
+                    SenderEmail = user.Email,
+                    Title = favorTradeModel.FavorTitle,
+                    Content = "The trade favor with this title was canceled",
+                    Type = MessageType.System
+                };
+
+                test.SendMessage(cancelMessage);
+
                 db.FavorTradeModels.Remove(allFavorTradeModels[currFavorTradeModel]);
             }
             
             receiverUser.AccomplishedFavors.Add(accomplishedTradeModelForTheReceiver);
             senderUser.AccomplishedFavors.Add(accomplishedTradeForTheSender);
+
+            Message successMessage = new Message
+            {
+                ReceiverId = receiverUser.Id,
+                SenderEmail = senderUser.Email,
+                Title = accomplishedTradeForTheSender.FavorTitle,
+                Content = "The trade favor with this title was accepted!!!",
+                Type = MessageType.System
+            };
+            
+            test.SendMessage(successMessage);
+
+            allFavorTradeModels = db.FavorTradeModels
+                                       .Where(ftm => ftm.FavorId == favorTradeModel.FavorId)
+                                       .ToList();
+
+            for (int currFavorTradeModel = 0; currFavorTradeModel < allFavorTradeModels.Count; currFavorTradeModel++)
+            {
+                db.FavorTradeModels.Remove(allFavorTradeModels[currFavorTradeModel]);
+            }
 
             db.Favors.Remove(fullFavor);
 
