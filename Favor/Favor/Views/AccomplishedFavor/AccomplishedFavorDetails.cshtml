@@ -1,0 +1,57 @@
+﻿@model Favor.Models.FavorModels.AccomplishedTradeModel
+
+@{
+    ViewBag.Title = "Details Page";
+    var currentUserEmail = User.Identity.Name;
+    var db = new Favor.Data.FavorDbContext();
+    var senderUser = db.Users.Find(Model.SenderId);
+    var recieverUser = db.Users.Find(Model.ReceiverId);
+
+    string url = $"/Profile/OtherProfile?otherProfileId={Model.ReceiverId}";
+    if (currentUserEmail == recieverUser.Email)
+    {
+        url = "/Profile/Profile";
+    }
+
+    decimal payOff;
+    bool isDigit = decimal.TryParse(Model.TradeOff, out payOff);
+}
+
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-sm-2 col-sm-offset-2">
+                <div class="card card-signup">
+                    <form class="form" method="post">
+                        <div class="header header-info text-center">
+                            <h1>@Model.FavorTitle</h1>
+                        </div>
+                        <p class="text-divider"><strong>@Model.FavorContent</strong> </p>
+                        <hr />
+                        <div class="col-md-6 col-md-push-3 input text-center">
+                            <span style="opacity:0.6">
+                                Posted from: <b><a href="@url">@Model.ReceiverFullName.ToUpper()</a></b>
+                                <br />
+                                <br/>
+                                Payed off with :@if (isDigit)
+	                                                {
+		                                                 <b>@payOff $</b> 
+                                                    }
+                                                    else
+                                                    { 
+                                                        <b>@Model.TradeOff</b> @:(Category)
+                                                    }
+                            <hr />
+                            <br />
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <p class="text-center"><a class="btn btn-white btn-round" href="@Favor.Models.FavorModels.FavorDetailViewModel.LastUsedUrl"><i class="fa fa-chevron-left"></i></a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
