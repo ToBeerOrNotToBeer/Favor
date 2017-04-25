@@ -309,10 +309,33 @@
                                                                                 if (recieverFullName != null)
                                                                                 {
                                                                                     <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id"><strong>@recieverFullName.FullName</strong></a></td>
-                                                                                }
-                                                                            }
+                                                                                 }
+                                                                             }
+                                                                             else if (message.Type == Favor.Data.MessageType.System)
+                                                                             {
+                                                                                 if (this.User.Identity.Name == message.SenderEmail)
+                                                                                 {
+                                                                                     var db = new Favor.Data.FavorDbContext();
 
-                                                                            @if (message.Type == Favor.Data.MessageType.FromAdmin)
+                                                                                     var recieverFullName = db.Users.FirstOrDefault(u => u.Id == message.ReceiverId);
+                                                                                     if (recieverFullName != null)
+                                                                                     {
+                                                                                        <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id"><strong>@recieverFullName.FullName</strong></a></td>
+                                                                                     }
+                                                                                 }
+                                                                                 else
+                                                                                 {
+                                                                                     var db = new Favor.Data.FavorDbContext();
+                                                                                     var senderFullName = db.Users.FirstOrDefault(u => u.Email == message.SenderEmail);
+                                                                                     if (senderFullName != null)
+                                                                                     {
+                                                                                        <td><a href="/Profile/OtherProfile?otherProfileId=@senderFullName.Id"><strong>@senderFullName.FullName</strong></a></td>
+                                                                                     }
+                                                                                 }
+                                                                             }
+
+                                                                            @if (message.Type == Favor.Data.MessageType.FromAdmin ||
+                                                                                 message.Type == Favor.Data.MessageType.System)
                                                                             {
                                                                                 <td style="color:red"><strong>@message.Type.ToString()</strong></td>
                                                                             }

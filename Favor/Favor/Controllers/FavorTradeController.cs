@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Favor.Controllers;
 
 namespace Favor.Controllers
 {
@@ -85,10 +86,24 @@ namespace Favor.Controllers
                 return RedirectToAction("Profile", "Profile");
             }
 
+            var userThatSendsCancelMessage = db.Users.FirstOrDefault(u => u.Id == favorTradeModel.SenderId);
+
+            Message cancelMessage = new Message
+            {
+                ReceiverId = favorTradeModel.RecieverId,
+                SenderEmail = userThatSendsCancelMessage.Email,
+                Title = favorTradeModel.FavorTitle,
+                Content = "The trade favor with this title was canceled",
+                Type = MessageType.System
+            };
+
+            MessageController test = new MessageController();
+            test.SendMessage(cancelMessage);
+
             db.FavorTradeModels.Remove(favorTradeModel);
 
             db.SaveChanges();
-
+            
             return RedirectToAction("Profile", "Profile");
         }
 

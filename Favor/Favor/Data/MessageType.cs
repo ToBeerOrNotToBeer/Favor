@@ -5,6 +5,7 @@
         None,
         Sent,
         Received,
-        FromAdmin
+        FromAdmin,
+        System
     }
 }
