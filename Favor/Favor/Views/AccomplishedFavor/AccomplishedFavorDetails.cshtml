@@ -13,6 +13,8 @@
         url = "/Profile/Profile";
     }
 
+    decimal payOff;
+    bool isDigit = decimal.TryParse(Model.TradeOff, out payOff);
 }
 
 <div class="wrapper">
@@ -29,7 +31,16 @@
                         <div class="col-md-6 col-md-push-3 input text-center">
                             <span style="opacity:0.6">
                                 Posted from: <b><a href="@url">@Model.ReceiverFullName.ToUpper()</a></b>
-                            </span>
+                                <br />
+                                <br/>
+                                Payed off with :@if (isDigit)
+	                                                {
+		                                                 <b>@payOff $</b> 
+                                                    }
+                                                    else
+                                                    { 
+                                                        <b>@Model.TradeOff</b> @:(Category)
+                                                    }
                             <hr />
                             <br />
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,8 +21,9 @@ namespace Favor.Controllers
 
             var db = new FavorDbContext();
             var userId = this.User.Identity.GetUserId();
-            var user = db.Users.Find(userId);
-            var accomplishedFavor = user.AccomplishedFavors.FirstOrDefault(f => f.Id == id);
+            var user = db.Users.Include(u=> u.AccomplishedFavors).FirstOrDefault(u=> u.Id== userId);
+
+            var accomplishedFavor = user.AccomplishedFavors.First(f => f.Id == id);
             if (accomplishedFavor == null)
             {
                 return RedirectToAction("Index", "Home");
