@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="footer text-center">
-                                <a href="/FavorTrade/ExecuteTheTrade?favorId=@Model.Id&recieverId=@Model.User.Id&tradeOff=@Model.PayOff.WithMoney.ToString("F2")" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="@Model.PayOff.WithMoney.ToString("F2")">PAYOFF Money</a>
+                                <a href="/FavorTrade/ExecuteTheTrade?favorId=@Model.Id&recieverId=@Model.User.Id&tradeOff=@Model.PayOff.WithMoney.ToString("F2")" class="btn btn-primary btn-round" data-toggle="tooltip" data-placement="top" title="@Model.PayOff.WithMoney.ToString("F2") $">PAYOFF Money</a>
                             </div>
                             @if (User.IsInRole("Admin") || Model.IsAuthor(User.Identity.Name))
                             {
