@@ -341,7 +341,12 @@
                                                                                  }
                                                                              }
 
-                                                                            @if (message.Type == Favor.Data.MessageType.FromAdmin ||
+                                                                            @if (message.Content.Contains("accepted") &&
+                                                                                    message.Type == Favor.Data.MessageType.System)
+                                                                            {
+                                                                                <td style="color:green"><strong>@message.Type.ToString()</strong></td>
+                                                                            }
+                                                                            else if (message.Type == Favor.Data.MessageType.FromAdmin ||
                                                                                  message.Type == Favor.Data.MessageType.System)
                                                                             {
                                                                                 <td style="color:red"><strong>@message.Type.ToString()</strong></td>
@@ -350,7 +355,7 @@
                                                                             {
                                                                                 <td>@message.Type.ToString()</td>
                                                                             }
-                                                                            
+
                                                                             <td>@message.Title</td>
                                                                             <td>@message.Content</td>
                                                                             <td>@message.DateSent</td>
