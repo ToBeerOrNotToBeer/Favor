@@ -283,12 +283,51 @@
                                                             <br />
                                                             <br />
                                                             <br />
+                                                                    
+
                                                             <table class="table">
                                                                 <tbody>
-                                                                    @foreach (var message in Model.Messages.OrderByDescending(u=> u.Id))
+
+                                                                    @if (this.User.IsInRole("Admin"))
+                                                                    {
+                                                                        foreach (var ticketForAdmin in Model
+                                                                                                         .TicketsForAdmin
+                                                                                                         .OrderByDescending(t => t.Id))
+                                                                        {
+                                                                            if (this.User.Identity.Name != ticketForAdmin.RecieverEmail)
+                                                                            {
+                                                                                continue;
+                                                                            }
+
+                                                                            <tr>
+                                                                                <td><a href="/Profile/OtherProfile?otherProfileId=@ticketForAdmin.SenderId"><b>@ticketForAdmin.SenderFullName</b></a></td>
+                                                                                <td style="color:red">@ticketForAdmin.Type.ToString()</td>
+                                                                                <td>@ticketForAdmin.Title</td>
+                                                                                <td>@ticketForAdmin.Content</td>
+                                                                                <td>@ticketForAdmin.TimeSent</td>
+                                                                            </tr>
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        foreach (var ticketForSender in Model
+                                                                                                         .TicketsForSender
+                                                                                                         .OrderByDescending(t => t.Id))
+                                                                        {
+                                                                            <tr>
+                                                                                <td><b>@ticketForSender.Reciever</b></td>
+                                                                                <td style="color:red">@ticketForSender.Type.ToString()</td>
+                                                                                <td>@ticketForSender.Title</td>
+                                                                                <td>@ticketForSender.Content</td>
+                                                                                <td>@ticketForSender.TimeSent</td>
+                                                                            </tr>
+                                                                        }
+                                                                    }
+
+                                                                    @foreach (var message in Model.Messages.OrderByDescending(u => u.Id))
                                                                     {
                                                                         <tr>
-                                                                             @if (message.Type == Favor.Data.MessageType.Received)
+                                                                            @if (message.Type == Favor.Data.MessageType.Received)
                                                                             {
                                                                                 var db = new Favor.Data.FavorDbContext();
                                                                                 var senderFullName = db.Users.FirstOrDefault(u => u.Email == message.SenderEmail);
@@ -316,33 +355,33 @@
                                                                                 if (recieverFullName != null)
                                                                                 {
                                                                                     <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id"><strong>@recieverFullName.FullName</strong></a></td>
-                                                                                 }
-                                                                             }
-                                                                             else if (message.Type == Favor.Data.MessageType.System)
-                                                                             {
-                                                                                 if (this.User.Identity.Name == message.SenderEmail)
-                                                                                 {
-                                                                                     var db = new Favor.Data.FavorDbContext();
+                                                                                }
+                                                                            }
+                                                                            else if (message.Type == Favor.Data.MessageType.System)
+                                                                            {
+                                                                                if (this.User.Identity.Name == message.SenderEmail)
+                                                                                {
+                                                                                    var db = new Favor.Data.FavorDbContext();
 
-                                                                                     var recieverFullName = db.Users.FirstOrDefault(u => u.Id == message.ReceiverId);
-                                                                                     if (recieverFullName != null)
-                                                                                     {
+                                                                                    var recieverFullName = db.Users.FirstOrDefault(u => u.Id == message.ReceiverId);
+                                                                                    if (recieverFullName != null)
+                                                                                    {
                                                                                         <td><a href="/Profile/OtherProfile?otherProfileId=@recieverFullName.Id"><strong>@recieverFullName.FullName</strong></a></td>
-                                                                                     }
-                                                                                 }
-                                                                                 else
-                                                                                 {
-                                                                                     var db = new Favor.Data.FavorDbContext();
-                                                                                     var senderFullName = db.Users.FirstOrDefault(u => u.Email == message.SenderEmail);
-                                                                                     if (senderFullName != null)
-                                                                                     {
+                                                                                    }
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    var db = new Favor.Data.FavorDbContext();
+                                                                                    var senderFullName = db.Users.FirstOrDefault(u => u.Email == message.SenderEmail);
+                                                                                    if (senderFullName != null)
+                                                                                    {
                                                                                         <td><a href="/Profile/OtherProfile?otherProfileId=@senderFullName.Id"><strong>@senderFullName.FullName</strong></a></td>
-                                                                                     }
-                                                                                 }
-                                                                             }
+                                                                                    }
+                                                                                }
+                                                                            }
 
                                                                             @if (message.Content.Contains("accepted") &&
-                                                                                    message.Type == Favor.Data.MessageType.System)
+message.Type == Favor.Data.MessageType.System)
                                                                             {
                                                                                 <td style="color:green"><strong>@message.Type.ToString()</strong></td>
                                                                             }
@@ -359,16 +398,15 @@
                                                                             <td>@message.Title</td>
                                                                             <td>@message.Content</td>
                                                                             <td>@message.DateSent</td>
-                                                                            <td class="td-actions text-right">                                                                               
+                                                                            <td class="td-actions text-right">
                                                                                 <script>
-                                                                                function ConfirmDeleteForMessages(id)
-                                                                                {
-                                                                                  var x = confirm("Are you sure you want to delete the message?");
-                                                                                    if (x)
-                                                                                        window.location.href = "/Message/DeleteMessage?id=" + Number(id);
-                                                                                  else
-                                                                                    return false;
-                                                                                }
+                                                                                     function ConfirmDeleteForMessages(id) {
+                                                                                         var x = confirm("Are you sure you want to delete the message?");
+                                                                                         if (x)
+                                                                                             window.location.href = "/Message/DeleteMessage?id=" + Number(id);
+                                                                                         else
+                                                                                             return false;
+                                                                                     }
                                                                                 </script>
 
                                                                                 <a href="#" Onclick="return ConfirmDeleteForMessages(@message.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
@@ -380,6 +418,9 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
+
+
+
 
 
                                                     </div>

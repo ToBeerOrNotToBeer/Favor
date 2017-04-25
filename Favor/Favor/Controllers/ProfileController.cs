@@ -24,6 +24,8 @@ namespace Favor.Controllers
                 .Include(u=> u.SentFavors)
                 .Include(u=> u.PendingFavors)
                 .Include(u=> u.AccomplishedFavors)
+                .Include(u=> u.TicketsForSender)
+                .Include(u=> u.TicketsForAdmin)
                 .FirstOrDefault(u => u.Id == currUserId);
 
             if (userToView == null)

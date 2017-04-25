@@ -6,6 +6,7 @@
         Sent,
         Received,
         FromAdmin,
-        System
+        System,
+        Ticket
     }
 }

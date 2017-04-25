@@ -18,6 +18,8 @@
             this.AccomplishedFavors = new List<AccomplishedTradeModel>();
             this.SentFavors = new List<FavorTradeModel>();
             this.Messages = new List<Message>();
+            this.TicketsForSender = new List<TicketForSender>();
+            this.TicketsForAdmin = new List<TicketForAdmin>();
         }
 
         [Required]
@@ -32,6 +34,10 @@
         public List<FavorTradeModel> SentFavors { get; set; }
 
         public List<Message> Messages { get; set; }
+
+        public List<TicketForSender> TicketsForSender { get; set; }
+
+        public List<TicketForAdmin> TicketsForAdmin { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

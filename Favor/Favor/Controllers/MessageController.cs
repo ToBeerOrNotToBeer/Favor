@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Favor.Data;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Favor.Controllers
 {
@@ -74,9 +76,61 @@ namespace Favor.Controllers
 
                 db.SaveChanges();
             }
-
             
             return RedirectToAction("Profile", "Profile");
+        }
+
+        [Authorize]
+        public ActionResult SendTicket(string title, string content, string senderEmail)
+        {
+            if (this.User.IsInRole("Admin") ||
+                senderEmail == null ||
+                title == null ||
+                content == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var db = new FavorDbContext();
+
+            List<User> allAdmins = new List<User>();
+            
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            var adminRole = roleManager.FindByName("Admin");
+            allAdmins = db.Users.Where(x => x.Roles.Any(s => s.RoleId == adminRole.Id)).ToList();
+            
+            if (allAdmins.Count == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var senderUser = db.Users.FirstOrDefault(u => u.Email == senderEmail);
+
+            var ticketForSender = new TicketForSender
+            {
+                Title = title,
+                Content = content
+            };
+
+            senderUser.TicketsForSender.Add(ticketForSender);
+
+            foreach (var user in allAdmins)
+            {
+                var ticketForAdmin = new TicketForAdmin
+                {
+                    SenderId = senderUser.Id,
+                    SenderFullName = senderUser.FullName,
+                    RecieverEmail = user.Email,
+                    Title = title,
+                    Content = content,
+                };
+
+                user.TicketsForAdmin.Add(ticketForAdmin);
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

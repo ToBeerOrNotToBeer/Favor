@@ -1,7 +1,8 @@
 ﻿@model Favor.Models.FavorModels.AccomplishedTradeModel
 
 @{
-    ViewBag.Title = "Details Page";
+    ViewBag.Title = "Accomplished Details";
+
     var currentUserEmail = User.Identity.Name;
     var db = new Favor.Data.FavorDbContext();
     var senderUser = db.Users.Find(Model.SenderId);

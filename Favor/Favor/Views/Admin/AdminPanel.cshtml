@@ -47,16 +47,13 @@
 
                                             <td class="td-actions text-right">
                                                 <script>
-                                                    function ConfirmUserDelete(id) {
-                                                        var x = confirm("Are you sure you want to delete the user?");
-                                                        if (x)
-                                                            window.location.href = "/Admin/DeleteUser?id=" + String(id);
-                                                        else
-                                                            return false;
-                                                    }
+                                                     function DeleteUser(idToDelete) {
+                                                         var x = confirm("Are you sure you want to decline the trade?");
+                                                         if (x)
+                                                             window.location.href = "/Admin/DeleteUser?idToDelete=" + String(idToDelete);
                                                 </script>
 
-                                                <a href="#" Onclick="return ConfirmUserDelete(@user.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+                                                <a href="#" Onclick="return DeleteUser(@user.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
                                             </td>
                                         </tr>
                                     }
