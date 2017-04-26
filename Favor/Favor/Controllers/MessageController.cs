@@ -132,5 +132,28 @@ namespace Favor.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult DeleteTicket(int? id)
+        {
+            var db = new FavorDbContext();
+
+            var currentUserEmail = User.Identity.GetUserName();
+            var currentUser = db.Users
+                .Include(u=> u.TicketsForAdmin)
+                .Include(u=> u.TicketsForSender)
+                .FirstOrDefault(u => u.Email == currentUserEmail);
+            if (this.User.IsInRole("Admin"))
+            {
+                currentUser.TicketsForAdmin.RemoveAll(t => t.Id == id);
+            }
+
+            else
+            {
+                currentUser.TicketsForSender.RemoveAll(t => t.Id == id);
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("Profile", "Profile");
+        }
     }
 }

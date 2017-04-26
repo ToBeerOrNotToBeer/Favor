@@ -305,6 +305,21 @@
                                                                                 <td>@ticketForAdmin.Title</td>
                                                                                 <td>@ticketForAdmin.Content</td>
                                                                                 <td>@ticketForAdmin.TimeSent</td>
+                                                                                <td class="td-actions text-right">
+                                                                                    <script>
+                                                                                        function ConfirmDeleteForMessages(id) {
+                                                                                            var x = confirm("Are you sure you want to delete the message?");
+                                                                                            if (x)
+                                                                                                window.location.href = "/Message/DeleteTicket?id=" + Number(id);
+                                                                                            else
+                                                                                                return false;
+                                                                                        }
+                                                                                    </script>
+
+                                                                                    <a href="#" Onclick="return ConfirmDeleteForMessages(@ticketForAdmin.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+
+
+                                                                                </td>
                                                                             </tr>
                                                                         }
                                                                     }
@@ -320,6 +335,21 @@
                                                                                 <td>@ticketForSender.Title</td>
                                                                                 <td>@ticketForSender.Content</td>
                                                                                 <td>@ticketForSender.TimeSent</td>
+                                                                                <td class="td-actions text-right">
+                                                                                    <script>
+                                                                                        function ConfirmDeleteForMessages(id) {
+                                                                                            var x = confirm("Are you sure you want to delete the message?");
+                                                                                            if (x)
+                                                                                                window.location.href = "/Message/DeleteTicket?id=" + Number(id);
+                                                                                            else
+                                                                                                return false;
+                                                                                        }
+                                                                                    </script>
+
+                                                                                    <a href="#" Onclick="return ConfirmDeleteForMessages(@ticketForSender.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+
+
+                                                                                </td>
                                                                             </tr>
                                                                         }
                                                                     }
