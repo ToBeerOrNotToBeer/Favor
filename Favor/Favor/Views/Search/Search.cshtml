@@ -26,7 +26,17 @@
 
     @if (Favor.Data.SearchManager.UsersToList != null && Favor.Data.SearchManager.UsersToList.Count == 0)
     {
-        <h1>NO MATCHIN USERS</h1>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="alert alert-info text-center">
+                <div class="container-fluid text-center">
+                    <div class="alert-icon ">
+                        <i class="material-icons">warning</i>
+                    </div>
+
+                    <span style="color: whitesmoke; margin-left: -38px"><b>No matching users found</b></span>
+            </div>
+        </div>
+        </div>
 
         Favor.Data.SearchManager.UsersToList = null;
         Favor.Data.SearchManager.FavorsToList = null;
@@ -94,7 +104,17 @@
     <!--FAVORS DISPLAY-->
     @if (Favor.Data.SearchManager.FavorsToList != null && Favor.Data.SearchManager.FavorsToList.Count == 0)
     {
-        <h1>NO MATCHING FAVORS</h1>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="alert alert-info text-center">
+                <div class="container-fluid text-center">
+                    <div class="alert-icon ">
+                        <i class="material-icons">warning</i>
+                    </div>
+
+                    <span style="color: whitesmoke; margin-left: -38px"><b>No matching favors found</b></span>
+                </div>
+            </div>
+        </div>
 
         Favor.Data.SearchManager.UsersToList = null;
         Favor.Data.SearchManager.FavorsToList = null;
