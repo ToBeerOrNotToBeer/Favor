@@ -181,13 +181,35 @@ namespace Favor.Controllers
             if (fullFavor ==null)
             {
                 return RedirectToAction("Index", "Home");
-
             }
 
+            var allUsers = db.Users.Include(u => u.SentFavors).Include(u => u.PendingFavors).ToList();
+
+            DeleteAllPendingAndSentRequestsFromUsersAccounts(allUsers, favorDeleteViewModel.Id);
+            
             db.Favors.Remove(fullFavor);
+
             db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        private void DeleteAllPendingAndSentRequestsFromUsersAccounts(List<User> allUsers, int idToDelete)
+        {
+            for (int currUser = 0; currUser < allUsers.Count; currUser++)
+            {
+                var user = allUsers[currUser];
+
+                if (user.SentFavors.Any(f => f.FavorId == idToDelete))
+                {
+                    user.SentFavors.RemoveAll(f => f.FavorId == idToDelete);
+                }
+
+                if (user.PendingFavors.Any(f => f.FavorId == idToDelete))
+                {
+                    user.PendingFavors.RemoveAll(f => f.FavorId == idToDelete);
+                }
+            }
         }
 
         [Authorize]

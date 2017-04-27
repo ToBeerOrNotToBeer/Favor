@@ -142,6 +142,7 @@ namespace Favor.Controllers
                 .Include(u=> u.TicketsForAdmin)
                 .Include(u=> u.TicketsForSender)
                 .FirstOrDefault(u => u.Email == currentUserEmail);
+
             if (this.User.IsInRole("Admin"))
             {
                 currentUser.TicketsForAdmin.RemoveAll(t => t.Id == id);
