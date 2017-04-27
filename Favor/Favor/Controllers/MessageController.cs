@@ -135,7 +135,9 @@ namespace Favor.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            MessageManager.TicketHasBeenSent = true;
+
+            return RedirectToAction("Contact", "Home");
         }
 
         public ActionResult DeleteTicket(int? id)

@@ -8,5 +8,7 @@ namespace Favor.Data
     public static class MessageManager
     {
         public static bool MessageHasBeenSent { get; set; }
+
+        public static bool TicketHasBeenSent { get; set; }
     }
 }

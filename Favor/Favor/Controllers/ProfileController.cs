@@ -42,6 +42,7 @@ namespace Favor.Controllers
        
 
         [HttpGet]
+        [Authorize]
         public ActionResult OtherProfile(string otherProfileId)
         {
             if (otherProfileId == null)
@@ -62,5 +63,6 @@ namespace Favor.Controllers
 
             return View(otherUser);
         }
+        
     }
 }
