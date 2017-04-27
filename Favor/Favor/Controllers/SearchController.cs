@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Favor.Models.SearchModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,18 @@ namespace Favor.Controllers
 {
     public class SearchController : Controller
     {
-        // GET: Search
+        [HttpGet]
+        [Authorize]
         public ActionResult Search()
         {
             return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult SearchResult(SearchModel model)
+        {
+            return RedirectToAction("Search");
         }
     }
 }
