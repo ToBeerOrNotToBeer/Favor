@@ -57,6 +57,9 @@ namespace Favor.Controllers
             receiverUser.Messages.Add(messageForTheReceiver);
             senderUser.Messages.Add(messageForTheSender);
 
+            receiverUser.Notifications.FromMessages += 1;
+            senderUser.Notifications.FromMessages += 1;
+
             db.SaveChanges();
 
             MessageManager.MessageHasBeenSent = true;
@@ -113,6 +116,7 @@ namespace Favor.Controllers
             };
 
             senderUser.TicketsForSender.Add(ticketForSender);
+            senderUser.Notifications.FromMessages += 1;
 
             foreach (var user in allAdmins)
             {
@@ -126,6 +130,7 @@ namespace Favor.Controllers
                 };
 
                 user.TicketsForAdmin.Add(ticketForAdmin);
+                user.Notifications.FromMessages += 1;
             }
 
             db.SaveChanges();

@@ -2,6 +2,16 @@
 
 @{
     ViewBag.Title = "My profile";
+
+    var database = new Favor.Data.FavorDbContext();
+
+    var currUserEmail = this.User.Identity.Name;
+
+    var user = database.Users.FirstOrDefault(u => u.Email == currUserEmail);
+
+    user.Notifications.ClearNotifications();
+
+    database.SaveChanges();
 }
 
 

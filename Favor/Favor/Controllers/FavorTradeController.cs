@@ -194,6 +194,9 @@ namespace Favor.Controllers
 
             recieverUser.PendingFavors.Add(favorTradeModel);
             senderUser.SentFavors.Add(favorTradeModel);
+
+            recieverUser.Notifications.FromPendingFavors += 1;
+
             db.SaveChanges();
 
             return RedirectToAction("Details", "Favor", new { @id = favorId });

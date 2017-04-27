@@ -21,6 +21,7 @@
             this.Messages = new List<Message>();
             this.TicketsForSender = new List<TicketForSender>();
             this.TicketsForAdmin = new List<TicketForAdmin>();
+            this.Notifications = new Notifications();
         }
 
         [Required]
@@ -39,6 +40,8 @@
         public List<TicketForSender> TicketsForSender { get; set; }
 
         public List<TicketForAdmin> TicketsForAdmin { get; set; }
+
+        public Notifications Notifications { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

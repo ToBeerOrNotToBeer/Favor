@@ -203,6 +203,7 @@
     <Compile Include="Data\Message.cs" />
     <Compile Include="Data\MessageManager.cs" />
     <Compile Include="Data\MessageType.cs" />
+    <Compile Include="Data\Notifications.cs" />
     <Compile Include="Data\PayOff.cs" />
     <Compile Include="Data\TicketForAdmin.cs" />
     <Compile Include="Data\TicketForSender.cs" />

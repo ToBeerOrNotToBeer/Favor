@@ -34,12 +34,14 @@
             <div class="dropdown" >
                 <a href="#" class="btn btn-info dropdown-toggle" style="margin-top:4px; margin-left:-10px; margin-right:-10px" data-toggle="dropdown" aria-hidden="true">
                     <i class="fa fa-bell" aria-hidden="true"></i>
-                    10
+                    @if (@user.Notifications.TotalNotifications != 0)
+                    {
+                        @user.Notifications.TotalNotifications
+                    }
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Messages (3)</a></li>
-                    <li><a href="#">Pending Favors (4)</a></li>
-                    <li><a href="#">Accomplished Favors (0)</a></li>
+                    <li><a href="/Profile/Profile">Messages (@user.Notifications.FromMessages)</a></li>
+                    <li><a href="/Profile/Profile">Pending Favors (@user.Notifications.FromPendingFavors)</a></li>
                 </ul>
             </div>
         </li>
