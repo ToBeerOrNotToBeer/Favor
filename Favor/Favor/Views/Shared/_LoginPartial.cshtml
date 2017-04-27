@@ -33,26 +33,31 @@
                 var currUserId = User.Identity.GetUserId();
 
                 var user = db.Users.Find(currUserId);
+
+                var userFullName = user == null ? this.User.Identity.GetUserName() : user.FullName;
             }
-            @Html.ActionLink(user.FullName, "Profile", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(userFullName, "Profile", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
 
         <!--Notification dropdown menu-->
-        <li>
-            <div class="dropdown" >
-                <a href="#" class="btn btn-info dropdown-toggle" style="margin-top:4px; margin-left:-10px; margin-right:-10px" data-toggle="dropdown" aria-hidden="true">
-                    <i class="fa fa-bell" aria-hidden="true"></i>
-                    @if (@user.Notifications.TotalNotifications != 0)
-                    {
-                        @user.Notifications.TotalNotifications
-                    }
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="/Profile/Profile">Messages (@user.Notifications.FromMessages)</a></li>
-                    <li><a href="/Profile/Profile">Pending Favors (@user.Notifications.FromPendingFavors)</a></li>
-                </ul>
-            </div>
-        </li>
+        @if (user != null)
+        {
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="btn btn-info dropdown-toggle" style="margin-top:4px; margin-left:-10px; margin-right:-10px" data-toggle="dropdown" aria-hidden="true">
+                        <i class="fa fa-bell" aria-hidden="true"></i>
+                        @if (user != null && user.Notifications.TotalNotifications != 0)
+                        {
+                            @user.Notifications.TotalNotifications
+                        }
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/Profile/Profile">Messages (@user.Notifications.FromMessages)</a></li>
+                        <li><a href="/Profile/Profile">Pending Favors (@user.Notifications.FromPendingFavors)</a></li>
+                    </ul>
+                </div>
+            </li>
+        }
 
         <!---->
 

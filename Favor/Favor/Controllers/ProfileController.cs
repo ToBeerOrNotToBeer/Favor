@@ -64,5 +64,34 @@ namespace Favor.Controllers
             return View(otherUser);
         }
         
+        [Authorize]
+        public ActionResult DeleteAllMessages(int? profileIntegerId)
+        {
+            if (profileIntegerId == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var db = new FavorDbContext();
+
+            var user = db.Users
+                .Include(u => u.Messages)
+                .Include(u => u.TicketsForSender)
+                .Include(u => u.TicketsForAdmin)
+                .FirstOrDefault(u => u.IntegerId == profileIntegerId);
+
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            user.Messages.Clear();
+            user.TicketsForAdmin.Clear();
+            user.TicketsForSender.Clear();
+
+            db.SaveChanges();
+
+            return RedirectToAction("Profile", "Profile");
+        }
     }
 }

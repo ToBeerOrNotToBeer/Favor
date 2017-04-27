@@ -22,10 +22,16 @@
             this.TicketsForSender = new List<TicketForSender>();
             this.TicketsForAdmin = new List<TicketForAdmin>();
             this.Notifications = new Notifications();
+            this.IntegerId = CustomUniqueIntegerId;
+            CustomUniqueIntegerId++;
         }
 
         [Required]
         public string FullName { get; set; }
+
+        public int IntegerId { get; set; }
+
+        private static int CustomUniqueIntegerId { get; set; }
 
         public List<Favor> MyFavors { get; set; }
 

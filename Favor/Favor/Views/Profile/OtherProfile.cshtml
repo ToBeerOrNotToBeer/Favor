@@ -82,15 +82,16 @@
                             </div> <!-- end back panel -->
                         </div> <!-- end card -->
                     </div> <!-- end card-container -->
+                    @if (this.User.IsInRole("Admin"))
+                    {
                     <div class="row text-center">
                         <div class="col-md-10 col-md-offset-1">
                             <div>
-                                <br />
-                                @if (this.User.IsInRole("Admin"))
-                                {
+                                
                                     <table class="table">
                                         @if (Model.MyFavors.Count != 0)
                                         {
+                                            <br />
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">Title</th>
@@ -130,10 +131,11 @@
                                             }
                                         </tbody>
                                     </table>
-                                }
+                                
                             </div>
                         </div>
                         </div>
+                    }
                       </div>
 
                     </div>

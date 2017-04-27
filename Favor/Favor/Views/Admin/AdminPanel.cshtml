@@ -42,19 +42,13 @@
                                     {
                                         var user = Model[currUser];
 
+                                        if (user.Email == this.User.Identity.Name)
+                                        {
+                                            continue;
+                                        }
+
                                         <tr>
-                                            <td class="text-left">@user.FullName</td>
-
-                                            <td class="td-actions text-right">
-                                                <script>
-                                                     function DeleteUser(idToDelete) {
-                                                         var x = confirm("Are you sure you want to decline the trade?");
-                                                         if (x)
-                                                             window.location.href = "/Admin/DeleteUser?idToDelete=" + String(idToDelete);
-                                                </script>
-
-                                                <a href="#" Onclick="return DeleteUser(@user.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
-                                            </td>
+                                            <td class="text-left"><a href="/Profile/OtherProfile?otherProfileId=@user.Id"><b>@user.FullName</b></a></td>
                                         </tr>
                                     }
 

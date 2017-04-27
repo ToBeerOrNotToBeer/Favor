@@ -513,6 +513,23 @@
                                                                 </tbody>
                                                             </table>
 
+                                                            @if (Model.Messages.Count != 0 ||
+                                                                 Model.TicketsForAdmin.Count != 0 ||
+                                                                 Model.TicketsForSender.Count != 0)
+                                                            {
+                                                                <script>
+                                                                                     function ConfirmDeleteAllMessages(id) {
+                                                                                         var x = confirm("Are you sure you want to delete all the messages?");
+                                                                                         if (x)
+                                                                                             window.location.href = "/Profile/DeleteAllMessages?profileIntegerId=" + Number(id);
+                                                                                         else
+                                                                                             return false;
+                                                                                     }
+                                                                </script>
+
+                                                                <div class=" text-center"><a href="#" Onclick="return ConfirmDeleteAllMessages(@Model.IntegerId);" type="submit" name="actiondelete" value="Clear messages" style="color:red; margin-top:-4px" class="btn btn-round btn-danger"></a></div>
+                                                            }
+
                                                         </div>
 
 
