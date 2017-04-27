@@ -16,7 +16,14 @@
             @Html.ActionLink("Create favor", "Create", "Favor")
         </li>
         <li>
-            @Html.ActionLink(User.Identity.GetUserName(), "Profile", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @{
+                var db = new Favor.Data.FavorDbContext();
+
+                var currUserId = User.Identity.GetUserId();
+
+                var user = db.Users.Find(currUserId);
+            }
+            @Html.ActionLink(user.FullName, "Profile", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
     </ul>

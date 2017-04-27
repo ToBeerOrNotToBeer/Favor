@@ -183,7 +183,7 @@ namespace Favor.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var allUsers = db.Users.Include(u => u.SentFavors).Include(u => u.PendingFavors).ToList();
+            var allUsers = db.Users.Include(u => u.SentFavors).Include(u => u.PendingFavors).Include(u => u.Messages).ToList();
 
             DeleteAllPendingAndSentRequestsFromUsersAccounts(allUsers, favorDeleteViewModel.Id);
             
