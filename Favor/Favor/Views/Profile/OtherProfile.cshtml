@@ -53,10 +53,10 @@
                                             <h1 style="margin: 5px 1px 0px 2px; opacity: 0.6">@Model.FullName</h1>
 
                                             <div class="col-md-12 text-center">
-                                               
+
                                                 @using (Html.BeginForm("SendMessage", "Message", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                                                 {
-                                                    <input name="Title" type="text" placeholder="Title" class="form-control" >
+                                                    <input name="Title" type="text" placeholder="Title" class="form-control">
 
                                                     <textarea name="Content" placeholder="Content" class="form-control" style="resize:vertical; height:140px"></textarea>
 
@@ -64,7 +64,7 @@
                                                     <input name="ReceiverId" type="text" class="fade" value="@Model.Id " style="display: inline-block" />
                                                     <input type="submit" class="btn btn-primary btn-round" style="margin-bottom:-60px; display: inline-block" value="Send">
                                                 }
-                                                
+
                                             </div>
 
 
@@ -82,14 +82,62 @@
                             </div> <!-- end back panel -->
                         </div> <!-- end card -->
                     </div> <!-- end card-container -->
+                    <div class="row text-center">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div>
+                                <br />
+                                @if (this.User.IsInRole("Admin"))
+                                {
+                                    <table class="table">
+                                        @if (Model.MyFavors.Count != 0)
+                                        {
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Title</th>
+                                                    <th class="text-center">Description</th>
+                                                    <th class="text-center">Date Posted</th>
+                                                    <th class="text-right">Actions</th>
+                                                </tr>
+                                            </thead>
+                                        }
+                                        <tbody>
+                                            @foreach (var favor in Model.MyFavors.OrderByDescending(f => f.Id))
+                                            {
+                                                var substr = favor.Description.Substring(0, favor.Description.Length < 50 ? favor.Description.Length : 50) + "...";
+                                                <tr>
+                                                    <td>@favor.Title</td>
+                                                    <td>@substr</td>
+                                                    <td>@favor.CreationDate</td>
+                                                    <td class="td-actions text-right">
 
+                                                        <form action="/Favor/Details/@favor.Id" style="display:inline-block">
+                                                            <button type="submit" rel="tooltip" title="View Favor" class="btn btn-info btn-simple btn-xs">
+                                                                <i class="fa fa-info"></i>
+                                                            </button>
+                                                        </form>
+                                                        <form action="/Favor/Edit/@favor.Id" style="display:inline-block">
+                                                            <button type="submit" rel="tooltip" title="Edit Favor" class="btn btn-success btn-simple btn-xs">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+                                                        </form>
+                                                        <form action="/Favor/Delete/@favor.Id" style="display:inline-block">
+                                                            <button type="submit" rel="tooltip" title="Delete Favor" class="btn btn-danger btn-simple btn-xs">
+                                                                <i class="fa fa-times"></i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+                        </div>
+                      </div>
 
-
-
+                    </div>
                 </div>
-
-            </div>
-        </div>
     </div>
 
 

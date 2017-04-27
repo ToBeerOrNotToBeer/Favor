@@ -51,7 +51,9 @@ namespace Favor.Controllers
 
             var db = new FavorDbContext();
 
-            var otherUser = db.Users.Find(otherProfileId);
+            var otherUser = db.Users
+                .Include(u=> u.MyFavors)
+                .FirstOrDefault(u=> u.Id == otherProfileId);
 
             if (otherUser == null)
             {
