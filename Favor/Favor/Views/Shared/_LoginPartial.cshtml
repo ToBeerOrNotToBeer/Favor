@@ -6,10 +6,18 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
+       
+        <li>
+            <a href="/Search/Search" class="fa fa-search" aria-hidden="true" style="font-size: 20px"></a>
+        </li>
+        
+        
         @if (User.IsInRole("Admin"))
         {
+
+            
             <li>
-                <a href="/Admin/AdminPanel" class="fa fa-users" aria-hidden="true" style="font-size: 30px"></a>
+                <a href="/Admin/AdminPanel" class="fa fa-users" aria-hidden="true" style="font-size: 20px"></a>
             </li>
         }
         <li>
