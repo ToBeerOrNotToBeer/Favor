@@ -328,7 +328,7 @@
                                                                     
 
                                                             <table class="table">
-                                                                @if (Model.Messages.Count != 0)
+                                                                @if (Model.Messages.Count != 0 || Model.TicketsForAdmin.Count != 0 || Model.TicketsForSender.Count != 0)
                                                                 {
                                                                     <thead>
                                                                         <tr>

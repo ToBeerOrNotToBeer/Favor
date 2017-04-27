@@ -15,6 +15,9 @@
         <li>
             @Html.ActionLink("Create favor", "Create", "Favor")
         </li>
+
+
+
         <li>
             @{
                 var db = new Favor.Data.FavorDbContext();
@@ -25,7 +28,29 @@
             }
             @Html.ActionLink(user.FullName, "Profile", "Profile", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
+
+        <!--Notification dropdown menu-->
+        <li>
+            <div class="dropdown" >
+                <a href="#" class="btn btn-info dropdown-toggle" style="margin-top:4px; margin-left:-10px; margin-right:-10px" data-toggle="dropdown" aria-hidden="true">
+                    <i class="fa fa-bell" aria-hidden="true"></i>
+                    10
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Messages (3)</a></li>
+                    <li><a href="#">Pending Favors (4)</a></li>
+                    <li><a href="#">Accomplished Favors (0)</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <!---->
+
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
+
+        
+
+
     </ul>
     }
 }
@@ -34,5 +59,8 @@ else
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+
+
     </ul>
 }
