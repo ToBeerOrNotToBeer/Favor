@@ -4,104 +4,159 @@
 <head>
 </head>
 <body>
-@using (Html.BeginForm("SearchResult", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <div class="col-md-8 col-md-offset-2 text-center container">
-        <div class="card text-center">            
-            <br />
-            <br />
-            <div class="text-center col-md-2 col-md-offset-5">
-                <input type="text" class="form-control text-center" placeholder="Search..." />
-            </div>  
-
-                <div class="col-md-4  col-md-offset-4 dropdown">
-                    <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="fa fa-search"></span>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Search Favors</a></li>
-                        <li><a href="#">Search Users</a></li>
-                    </ul>
+    @using (Html.BeginForm("SearchResult", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="col-md-8 col-md-offset-2 text-center container">
+            <div class="card text-center">
+                <br />
+                <br />
+                <div class="text-center col-md-2 col-md-offset-5">
+                    <input type="text" class="form-control text-center" placeholder="Search..." name="toSearch" />
                 </div>
+
+                <div class="col-md-4 col-md-offset-4">
+                    <input type="submit" name="options" value="Users" class="btn btn-primary" />
+                    <input type="submit" name="options" value="Favors" class="btn btn-primary" />
+                </div>
+            </div>
         </div>
-    </div>
-}
+    }
 
-    <!-----SEARCH FAVORS---->
-    
-    <div class="col-md-8 col-md-offset-2">
-        <div>
-            <br />
-            <br />
-            <br />
+    <!-----USERS DISPLAYs---->
 
-            <table class="table">
-                <thead>
-                    <tr>
+    @if (Favor.Data.SearchManager.UsersToList != null && Favor.Data.SearchManager.UsersToList.Count == 0)
+    {
+        <h1>NO MATCHIN USERS</h1>
 
-                        <th>Username</th>
-                        <th>Favors</th>
-                        <th>Accomplished</th>
-                        <th class="text-right">Action</th>
-                    </tr>
-                </thead>
+        Favor.Data.SearchManager.UsersToList = null;
+        Favor.Data.SearchManager.FavorsToList = null;
+    }
+    else if (Favor.Data.SearchManager.Options == Favor.Data.SearchOptions.Users &&
+        Favor.Data.SearchManager.UsersToList != null)
+    {
+        <div class="col-md-8 col-md-offset-2">
+            <div>
+                <br />
+                <br />
+                <br />
 
-                <tbody>
-                    <tr>
-                        <td>Andrew Mike</td>
-                        <td>Develop</td>
-                        <td>2013</td>
-                        <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-                                <i class="fa fa-info"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+
+                            <th>Username</th>
+                            <th>Favors</th>
+                            <th>Accomplished</th>
+                            <th class="text-right">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var user in Favor.Data.SearchManager.UsersToList)
+                        {
+                            string url = string.Empty;
+
+                            <tr>
+                                @if (User.Identity.Name == user.Email)
+                                {
+                                    url = "/Profile/Profile";
+                                    <td><a href="@url"><b>@user.FullName</b></a></td>
+                                }
+                                else
+                                {
+                                    url = $"/Profile/OtherProfile?otherProfileId={user.Id}";
+                                    <td><a href="@url"><b>@user.FullName</b></a></td>
+                                }
+
+                                <td>@user.MyFavors.Count</td>
+                                <td>@user.AccomplishedFavors.Count</td>
+                                <td class="td-actions text-right">
+                                    <form action="@url">
+                                        <button type="submit" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                                            <i class="fa fa-info"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+
+        Favor.Data.SearchManager.UsersToList = null;
+        Favor.Data.SearchManager.FavorsToList = null;
+    }
 
     <!-----END---->
 
+    <!--FAVORS DISPLAY-->
+    @if (Favor.Data.SearchManager.FavorsToList != null && Favor.Data.SearchManager.FavorsToList.Count == 0)
+    {
+        <h1>NO MATCHING FAVORS</h1>
 
+        Favor.Data.SearchManager.UsersToList = null;
+        Favor.Data.SearchManager.FavorsToList = null;
+    }
+    else if (Favor.Data.SearchManager.Options == Favor.Data.SearchOptions.Favors &&
+        Favor.Data.SearchManager.FavorsToList != null)
+    {
+        <div class="col-md-10 col-md-offset-1">
+            <div>
+                <br />
+                <br />
+                <br />
 
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Date Posted</th>
+                            <th class="text-right">Action</th>
+                        </tr>
+                    </thead>
 
-    <!---->
-    <div class="col-md-10 col-md-offset-1">
-        <div>
-            <br />
-            <br />
-            <br />
+                    <tbody>
+                        
+                        @foreach (var favor in Favor.Data.SearchManager.FavorsToList)
+                        {
+                            string url = string.Empty;
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>From</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Date Posted</th>
-                        <th class="text-right">Action</th>
-                    </tr>
-                </thead>
+                            <tr>
+                                @if (favor.User.Email == this.User.Identity.Name)
+                                {
+                                    url = "/Profile/Profile";
+                                }
+                                else
+                                {
+                                    url = $"/Profile/OtherProfile?otherProfileId={favor.User.Id}";
+                                }
 
-                <tbody>
-                    <tr>
-                        <td>Andrew Mike</td>
-                        <td>Title</td>
-                        <td>Description</td>
-                        <td>Date Posted</td>
-                        <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
-                                <i class="fa fa-info"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                                <td><a href="@url"><b>@favor.User.FullName</b></a></td>
+                                <td>@favor.Title</td>
+                                <td>@favor.Description</td>
+                                <td>@favor.CreationDate</td>
+                                <td class="td-actions text-right">
+                                    <form action="/Favor/Details/@favor.Id">
+                                        <button type="submit" rel="tooltip" title="View Profile" class="btn btn-info btn-simple btn-xs">
+                                            <i class="fa fa-info"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+
+        Favor.Data.SearchManager.UsersToList = null;
+        Favor.Data.SearchManager.FavorsToList = null;
+    }
     <!---->
 
 </body>

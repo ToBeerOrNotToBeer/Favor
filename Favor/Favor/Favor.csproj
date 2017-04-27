@@ -206,6 +206,8 @@
     <Compile Include="Data\MessageType.cs" />
     <Compile Include="Data\Notifications.cs" />
     <Compile Include="Data\PayOff.cs" />
+    <Compile Include="Data\SearchManager.cs" />
+    <Compile Include="Data\SearchOptions.cs" />
     <Compile Include="Data\TicketForAdmin.cs" />
     <Compile Include="Data\TicketForSender.cs" />
     <Compile Include="Global.asax.cs">
@@ -223,8 +225,6 @@
     <Compile Include="Models\FavorModels\FavorTradeModel.cs" />
     <Compile Include="Models\FavorModels\ListAllFavorsModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\SearchModels\SearchModel.cs" />
-    <Compile Include="Models\SearchModels\SearchType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

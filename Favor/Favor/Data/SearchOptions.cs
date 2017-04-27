@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Favor.Models.SearchModels
+namespace Favor.Data
 {
-    public enum SearchType
+    public enum SearchOptions
     {
-        Favors,
-        Profiles
+        Users,
+        Favors
     }
 }
