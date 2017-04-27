@@ -2,16 +2,33 @@
     ViewBag.Title = "Search";
 }
 
-<!DOCTYPE html>
-
 <html>
 <head>
 </head>
-
-
 <body>
-    <div>
-    
+@using (Html.BeginForm("SearchResult", "Search", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="col-md-8 col-md-offset-2 text-center container">
+        <div class="card text-center">            
+            <br />
+            <br />
+            <div class="text-center col-md-2 col-md-offset-5">
+                <input type="text" class="form-control text-center" placeholder="Search..." />
+            </div>  
+
+                <div class="col-md-4  col-md-offset-4 dropdown">
+                    <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-search"></span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Search Favors</a></li>
+                        <li><a href="#">Search Users</a></li>
+                    </ul>
+                </div>
+            
+        </div>
     </div>
+}
 </body>
-</html>
+
