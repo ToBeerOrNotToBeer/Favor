@@ -87,14 +87,17 @@
                                                             <br />
                                                             <br />
                                                             <table class="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th class="text-center">Title</th>
-                                                                        <th  class="text-center">Description</th>
-                                                                        <th  class="text-center">Date Posted</th>                                                                      
-                                                                        <th class="text-right">Actions</th>
-                                                                    </tr>
-                                                                </thead>
+                                                                @if (Model.MyFavors.Count != 0)
+                                                                {
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center">Title</th>
+                                                                            <th class="text-center">Description</th>
+                                                                            <th class="text-center">Date Posted</th>
+                                                                            <th class="text-right">Actions</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                }
                                                             <tbody>
                                                                 @foreach (var favor in Model.MyFavors.OrderByDescending(f=>f.Id))
                                                                 {
@@ -137,6 +140,19 @@
                                                             <br />
                                                             <br />
                                                             <table class="table">
+                                                                @if (Model.PendingFavors.Count != 0)
+                                                                {
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center">From</th>
+                                                                            <th class="text-center">Title</th>
+                                                                            <th class="text-center">Description</th>
+                                                                            <th class="text-center">Trade Off</th>
+                                                                            <th class="text-center">Date Posted</th>
+                                                                            <th class="text-right">Actions</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                }
                                                                 <tbody>
                                                                     @foreach (var pendingFavor in Model.PendingFavors.OrderByDescending(f => f.Id))
                                                                     {
@@ -193,6 +209,19 @@
                                                             <br />
                                                             <br />
                                                             <table class="table">
+                                                                @if (Model.SentFavors.Count != 0)
+                                                                {
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center">To</th>
+                                                                            <th class="text-center">Title</th>
+                                                                            <th class="text-center">Description</th>
+                                                                            <th class="text-center">Trade Off</th>
+                                                                            <th class="text-center">Date Posted</th>
+                                                                            <th class="text-right">Actions</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                }
                                                                 <tbody>
                                                                     @foreach (var sentFavor in Model.SentFavors.OrderByDescending(f => f.Id))
                                                                     {
@@ -238,6 +267,19 @@
                                                             <br />
                                                             <br />
                                                             <table class="table">
+                                                                @if (Model.AccomplishedFavors.Count != 0)
+                                                                {
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center">With</th>
+                                                                            <th class="text-center">Title</th>
+                                                                            <th class="text-center">Description</th>
+                                                                            <th class="text-center">Trade Off</th>
+                                                                            <th class="text-center">Date Posted</th>
+                                                                            <th class="text-right">Actions</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                }
                                                                 <tbody>
                                                                     @foreach (var accomplishedFavor in Model.AccomplishedFavors.OrderByDescending(f => f.Id))
                                                                     {
@@ -286,6 +328,19 @@
                                                                     
 
                                                             <table class="table">
+                                                                @if (Model.Messages.Count != 0)
+                                                                {
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center">From/To</th>
+                                                                            <th class="text-center">Type</th>
+                                                                            <th class="text-center">Title</th>
+                                                                            <th class="text-center">Description</th>
+                                                                            <th class="text-center">Date Posted</th>
+                                                                            <th class="text-right">Actions</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                }
                                                                 <tbody>
 
                                                                     @if (this.User.IsInRole("Admin"))
