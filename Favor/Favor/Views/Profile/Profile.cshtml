@@ -301,14 +301,14 @@
 
                                                                             <tr>
                                                                                 <td><a href="/Profile/OtherProfile?otherProfileId=@ticketForAdmin.SenderId"><b>@ticketForAdmin.SenderFullName</b></a></td>
-                                                                                <td style="color:red">@ticketForAdmin.Type.ToString()</td>
+                                                                                <td style="color:red"><b>@ticketForAdmin.Type.ToString()</b></td>
                                                                                 <td>@ticketForAdmin.Title</td>
                                                                                 <td>@ticketForAdmin.Content</td>
                                                                                 <td>@ticketForAdmin.TimeSent</td>
                                                                                 <td class="td-actions text-right">
                                                                                     <script>
-                                                                                        function ConfirmDeleteForMessages(id) {
-                                                                                            var x = confirm("Are you sure you want to delete the message?");
+                                                                                        function ConfirmDeleteForTickets(id) {
+                                                                                            var x = confirm("Are you sure you want to delete the ticket?");
                                                                                             if (x)
                                                                                                 window.location.href = "/Message/DeleteTicket?id=" + Number(id);
                                                                                             else
@@ -316,7 +316,7 @@
                                                                                         }
                                                                                     </script>
 
-                                                                                    <a href="#" Onclick="return ConfirmDeleteForMessages(@ticketForAdmin.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+                                                                                    <a href="#" Onclick="return ConfirmDeleteForTickets(@ticketForAdmin.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
 
 
                                                                                 </td>
@@ -331,14 +331,14 @@
                                                                         {
                                                                             <tr>
                                                                                 <td><b>@ticketForSender.Reciever</b></td>
-                                                                                <td style="color:red">@ticketForSender.Type.ToString()</td>
+                                                                                <td style="color:red"><b>@ticketForSender.Type.ToString()</b></td>
                                                                                 <td>@ticketForSender.Title</td>
                                                                                 <td>@ticketForSender.Content</td>
                                                                                 <td>@ticketForSender.TimeSent</td>
                                                                                 <td class="td-actions text-right">
                                                                                     <script>
-                                                                                        function ConfirmDeleteForMessages(id) {
-                                                                                            var x = confirm("Are you sure you want to delete the message?");
+                                                                                        function ConfirmDeleteForTickets(id) {
+                                                                                            var x = confirm("Are you sure you want to delete the ticket?");
                                                                                             if (x)
                                                                                                 window.location.href = "/Message/DeleteTicket?id=" + Number(id);
                                                                                             else
@@ -346,7 +346,7 @@
                                                                                         }
                                                                                     </script>
 
-                                                                                    <a href="#" Onclick="return ConfirmDeleteForMessages(@ticketForSender.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+                                                                                    <a href="#" Onclick="return ConfirmDeleteForTickets(@ticketForSender.Id);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
 
 
                                                                                 </td>
