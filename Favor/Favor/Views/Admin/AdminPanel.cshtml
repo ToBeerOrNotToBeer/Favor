@@ -51,7 +51,17 @@
                                             <td class="text-left"><a href="/Profile/OtherProfile?otherProfileId=@user.Id"><b>@user.FullName</b></a></td>
 
                                             <td class="td-actions text-right">
-                                                <a href="/Profile/OtherProfile?otherProfileId=@user.Id" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
+                                                <script>
+                                                   function ConfirmDeleteForUser(id) {
+                                                       var x = confirm("Are you sure you want to delete this user?");
+                                                       if (x)
+                                                           window.location.href = "/Admin/DeleteUser?integerIdToDelete=" + Number(id);
+                                                       else
+                                                           return false;
+                                                   }
+                                                </script>
+
+                                                <a href="#" Onclick="return ConfirmDeleteForUser(@user.IntegerId);" type="submit" name="actiondelete" value="1" style="color:red; margin-top:-4px"><i class="fa fa-times"></i></a>
                                             </td>
                                         </tr>
                                     }

@@ -25,16 +25,16 @@ namespace Favor.Controllers
         }
 
         [Authorize]
-        public ActionResult DeleteUser(string idToDelete)
+        public ActionResult DeleteUser(int? integerIdToDelete)
         {
-            if (idToDelete == null)
+            if (integerIdToDelete == null)
             {
                 return RedirectToAction("AdminPanel");
             }
 
             var db = new Favor.Data.FavorDbContext();
 
-            var userToRemove = db.Users.Find(idToDelete);
+            var userToRemove = db.Users.FirstOrDefault(u => u.IntegerId == integerIdToDelete);
 
             if (userToRemove == null)
             {
@@ -42,6 +42,8 @@ namespace Favor.Controllers
             }
 
             db.Users.Remove(userToRemove);
+
+            db.SaveChanges();
 
             return RedirectToAction("AdminPanel");
         }
